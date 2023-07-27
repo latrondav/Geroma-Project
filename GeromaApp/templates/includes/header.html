@@ -1,0 +1,83 @@
+
+{% load static %}
+
+{% if user.is_authenticated %}
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center ">
+        <div class="container d-flex align-items-center justify-content-between">
+          <h1 class="logo"><a href="\"><strong>GEROMA</strong></a></h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href=index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+  
+          <nav id="navbar" class="navbar">
+            <ul>
+              <li><a class="nav-link scrollto" href="\"><strong>HOME</strong></a></li>
+              <li class="dropdown"><a href="\aboutus"><span><strong>ABOUT</strong></span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="\aboutus"><strong>ABOUT US</strong></a></li>
+                  <li><a href="\history"><strong>OUR HISTORY</strong></a></li>
+                  <li><a href="\features"><strong>OUR TEAM</strong></a></li>
+                </ul>
+              </li>
+              <li><a class="nav-link scrollto" href="\events"><strong>SERVICES</strong></a></li>
+              <li class="dropdown"><a href="\projects"><span><strong>FEATURES</strong></span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="\projects"><strong>HS CODES</strong></a></li>
+                  <li><a href="\softwarehub"><strong>REQUEST A RATE</strong></a></li>
+                </ul>
+              </li>
+              <li><a class="nav-link scrollto" href="\carbinet"><strong>BLOG</strong></a></li>
+              <li><a class="nav-link scrollto" href="\contact"><strong>CONTACT</strong></a></li>
+              <li><a class="nav-link scrollto" href="#" data-toggle="modal" data-target="#YourAccountModal"><strong>{{ user.first_name }}</strong></a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
+  
+        </div>
+    </header>
+    <!-- End Header -->
+
+{% else %}
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center ">
+      <div class="container d-flex align-items-center justify-content-between">
+        <h1 class="logo">
+          <a href="\"><strong>GEROMA</strong></a>
+        </h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href=index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+  
+          <nav id="navbar" class="navbar">
+            <ul>
+              <li><a class="nav-link scrollto" href="\"><strong>HOME</strong></a></li>
+              <li class="nav-link scrollto dropdown"><a href="\aboutus"><span><strong>ABOUT</strong></span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="\aboutus"><strong>ABOUT US</strong></a></li>
+                  <li><a href="\history"><strong>OUR HISTORY</strong></a></li>
+                  <li><a href="\features"><strong>OUR TEAM</strong></a></li>
+                </ul>
+              </li>
+              <li><a class="nav-link scrollto" href="\events"><strong>SERVICES</strong></a></li>
+              <li class="dropdown"><a href="\projects"><span><strong>FEATURES</strong></span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="\projects"><strong>HS CODES</strong></a></li>
+                  <li><a href="\softwarehub"><strong>REQUEST A TAX RATE</strong></a></li>
+                </ul>
+              </li>
+              <li><a class="nav-link scrollto" href="\carbinet"><strong>BLOG</strong></a></li>
+              <li><a class="nav-link scrollto" href="\contact"><strong>CONTACT</strong></a></li>
+            </ul>
+      
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav>
+          <!-- .navbar -->
+          
+      </div>
+    </header>
+    <!-- End Header -->
+
+{% endif %}
+
+

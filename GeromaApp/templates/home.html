@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  {% load static %}
+
+  <title>GEROMA - HOME</title>
+  
+  {% include 'includes/head.html'%}
+
+  <body>
+  
+    {% include 'includes/header.html' %}
+
+    {% if user.is_authenticated %}
+    <!-- === After Login View === -->
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex justify-cntent-center align-items-center">
+
+      <div class="wave">
+
+        <svg width="100%" height="155px" viewBox="0 0 1920 155" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
+              <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,757 L1017.15166,757 L0,757 L0,439.134243 Z" id="Path"></path>
+            </g>
+          </g>
+        </svg>
+
+      </div>
+
+      <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <div class="carousel-container">
+            <img class="animate__animated animate__fadeInUp" src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 100px; border-radius: 2rem;" alt="">
+            <h2 class="animate__animated animate__fadeInDown"><strong>GEROMA LOGISTICS LIMITED</strong></span></h2>
+            <p class="animate__animated animate__fadeInUp"><strong>EMPOWER, INNOVATE & MOTIVATE</strong></p>
+            <a class="btn-get-started animate__animated animate__fadeInUp scrollto"  data-toggle="modal" data-target="#YourAccountModal"><strong>YOUR ARE WELCOME {{ user.first_name }}</strong></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Hero -->
+
+
+    <!--================ Model Area =================-->
+    {% include 'includes/profilemodal.html' %}
+
+    {% include 'includes/updateaccountprofilemodal.html' %}
+
+    {% include 'passwordmgt/pw_change_form.html' %}
+    <!--================ End Modal Area =================--> 
+
+    <!-- Main Section -->
+    <main id="main">
+
+      <!-- ======= Icon Boxes Section ======= -->
+      <section id="icon-boxes" class="icon-boxes">
+        <div class="container">
+
+          <div class="row">
+            <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up">
+              <div class="icon-box">
+                <h4 class="title text-center"><a href="">MISSION</a></h4>
+                <p class="description">"To impact high quality and Advanced Technical Education and make a positive difference in students to become leaders in the I.T.Industry.”</p>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon-box">
+                <h4 class="title text-center"><a href="">VISSION</a></h4>
+                <p class="description">“To Enhance Business with Technology, create the Best Personal Computing Experience to Students ,and to breed creative Professionals through Innovative Business I.T.Strategies.”</p>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon-box">
+                <h4 class="title text-center"><a href="">MOTTO</a></h4>
+                <p class="description">Empower Innovate & Motivate.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section><!-- End Icon Boxes Section -->
+
+      
+
+      <!-- ======= Clients Section ======= -->
+      {% include 'includes/clients.html' %}
+      <!-- End Clients Section -->
+
+    </main>
+    <!-- End #main -->
+    <!-- === After Login View === -->
+
+    {% else %}
+
+    <!-- === Before Login View === -->
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex justify-cntent-center align-items-center">
+
+      <div class="wave">
+
+        <svg width="100%" height="155px" viewBox="0 0 1920 155" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
+              <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,757 L1017.15166,757 L0,757 L0,439.134243 Z" id="Path"></path>
+            </g>
+          </g>
+        </svg>
+
+      </div>
+
+      <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-item active">
+          <div class="carousel-container">
+            <img class="animate__animated animate__fadeInUp" src="{% static 'assets/img/geromalogoicon.png' %}" style="border-radius: 10rem;" alt="">
+            <h2 class="animate__animated animate__fadeInDown"><strong>GEROMA LOGISTICS LIMITED</strong></span></h2>
+            <p class="animate__animated animate__fadeInUp"><strong>EMPOWER, INNOVATE & MOTIVATE</strong></p>
+            <a class="btn-get-started animate__animated animate__fadeInUp scrollto"  data-toggle="modal" data-target="#RegisterModal"><strong>REGISTER</strong></a>
+            <a class="btn-get-started animate__animated animate__fadeInUp scrollto" data-toggle="modal" data-target="#LoginModal"><strong>LOGIN</strong></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Hero -->
+
+    <!--================ Model Area =================-->    
+    <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close btn-danger" style="border-radius: 10rem;"data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+          <div class="modal-body">
+            <form action="/login/" method="POST" class="home-form">
+              {% csrf_token %}
+                <div class="form-group">
+                  <div class="text-center">
+                    <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="text-center text-white">
+                    <h2>LOGIN</h2>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control text-center" style="border-radius: 5rem;" id="username" name="username" placeholder="STUDENT NUMBER" required="">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control text-center" style="border-radius: 5rem;" id="pass1" name="pass1" placeholder="PASSWORD" required="">
+                </div>
+                <div class="form-group">
+                  <div class="text-center text-white">
+                    <input type="checkbox" id="checkrememberme">
+                    <label for="checkrememberme">
+                      <strong>Remember Me.</strong>
+                    </label>
+                  </div>  
+                </div>
+                <div class="form-group">
+                  <div class="text-center">
+                    <a class="text-white" data-dismiss="modal" data-toggle="modal" data-target="#PassResetFormModal"><strong>Forgot Password? Reset Here</strong></a>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="text-center">
+                    <button type="submit" class="home-btn"><strong>LOGIN</strong></button>
+                  </div>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="RegisterModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close btn-danger" style="border-radius: 10rem;"data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+          <div class="modal-body">
+            <form action="/register/"  method="POST" class="home-form">
+              {% csrf_token %}
+                <div class="form-group">
+                  <div class="text-center">
+                    <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="text-center text-white">
+                    <h2><strong>REGISTER</strong></h2>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control text-center" style="border-radius: 5rem;" id="username" name="username" placeholder="STUDENT NUMBER" required="">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control text-center" style="border-radius: 5rem;" id="firstname" name="firstname" placeholder="FIRST NAME" required="">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control text-center" style="border-radius: 5rem;" id="lastname" name="lastname" placeholder="LAST NAME" required="">
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control text-center" style="border-radius: 5rem;" id="email" name="email" placeholder="EMAIL" required="">
+                </div>
+                
+                <div class="form-group">
+                  <input type="password" class="form-control text-center" style="border-radius: 5rem;" id="pass1" name="pass1" placeholder="PASSWORD" required="">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control text-center" style="border-radius: 5rem;" id="pass2" name="pass2" placeholder="RE-ENTER PASSWORD" required="">
+                </div>
+                <div class="form-group">
+                  <div class="text-center text-white">
+                    <input type="checkbox" id="checkpolicy" required="">
+                    <label for="checkpolicy">
+                      <strong>I agree to the policies of SICA MUBS.</strong>
+                    </label>
+                  </div>  
+                </div>
+                <div class="form-group">
+                  <div class="text-center">
+                    <button type="submit" class="home-btn"><strong>REGISTER</strong></button>
+                  </div>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include 'passwordmgt/pw_reset_form.html' %}
+    <!--================ End Modal Area =================--> 
+
+    <!-- Main Section -->
+    <main id="main">
+
+      <!-- ======= Icon Boxes Section ======= -->
+      <section id="icon-boxes" class="icon-boxes">
+        <div class="container">
+
+          <div class="row">
+            <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up">
+              <div class="icon-box">
+                <h4 class="title text-center"><a href="">MISION</a></h4>
+                <p class="description">"To impact high quality and Advanced Technical Education and make a positive difference in students to become leaders in the I.T.Industry.”</p>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon-box">
+                <h4 class="title text-center"><a href="">VISION</a></h4>
+                <p class="description">“To Enhance Business with Technology, create the Best Personal Computing Experience to Students ,and to breed creative Professionals through Innovative Business I.T.Strategies.”</p>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon-box">
+                <h4 class="title text-center"><a href="">MOTTO</a></h4>
+                <p class="description">Empower Innovate & Motivate.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section><!-- End Icon Boxes Section -->
+
+      
+
+      <!-- ======= Clients Section ======= -->
+      {% include 'includes/clients.html' %}
+      <!-- End Clients Section -->
+
+    </main>
+    <!-- End #main -->
+    <!-- === End Before Login View === -->
+
+    {% endif %}
+
+   {% include 'includes/footer.html' %}
+
+    
+
+  </body>
+</html>

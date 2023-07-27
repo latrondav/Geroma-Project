@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  {% load static %}
+
+  <title>SICA MUBS - HISTORY</title>
+
+  {% include 'includes/head.html'%}
+
+<body>
+
+  {% include 'includes/header.html' %}
+
+  {% if user.is_authenticated %}
+
+  <!-- === After Login View, Normal Member === -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex justify-cntent-center align-items-center">
+
+    <div class="wave">
+
+        <svg width="1920px" height="215px" viewBox="0 0 1920 215" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
+              <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,667 L1017.15166,667 L0,667 L0,439.134243 Z" id="Path"></path>
+            </g>
+          </g>
+        </svg>
+
+      </div>
+
+    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-item active">
+        <div class="carousel-container">
+          <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
+          <h2 class="animate__animated animate__fadeInDown">SICA HISTORY</h2>
+        </div>        
+      </div>
+    </div>
+  </section>
+  <!-- End Hero -->
+   
+  <!-- Main -->
+  <main id="main">
+
+    <!-- ======= Project Section ======= -->
+    <section id="project" class="project section-bg">
+        <div class="container" data-aos="fade-up">
+
+          <div class="section-title"></div>
+  
+          <div class="row">
+            <section class="section">
+              <div class="container">
+                <div class="row align-items-center">
+                  <div class="col-md-4 msauto order-2">
+                    <h2 class="mb-4"><strong>FOUNDER SICA - MR. SSENDI SAMUEL</strong></h2>
+                    <p class="mb-4" style="text-align: justify;">
+                      Experienced in CyberSecurity and IT Auditor with demonstrated leadership and innovative abilities | Skilled in Python, Cloud Engineering, Data Analysis, PHP, WordPress,
+                      Service Desk, Report Writing, and Threat & Vulnerability Management
+                      Pursued a Bachelor's degree in Business Computing focused in Information System Administration and Management from Makerere University Business School | Lecturer at MUBS
+                    </p>
+                    <div class="history-social">
+                      <a href=""><i class="ri-twitter-fill"></i></a>
+                      <a href=""><i class="ri-facebook-fill"></i></a>
+                      <a href=""><i class="ri-instagram-fill"></i></a>
+                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                    </div>
+                  </div>
+                  <div class="col-md-6" data-aos="fade-left">
+                    <img src="{% static 'assets/img/history/SSENDI.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+            </section>
+        
+            <section class="section">
+              <div class="container">
+                <div class="row align-items-center">
+                  <div class="col-md-4 ms-auto order-2">
+                    <h2 class="mb-4"><strong>PATRON - MR. CHARLES OLUPOT</strong></h2>
+                    <p class="mb-4" style="text-align: justify;">
+                      Director MUBS ICT Center Bugolobi. Program Manager, Project Planner, Researcher, Lecturer at MUBS, Management Consultant, Entreprenure, Business Strategist, Team Builder.
+                    </p>
+                    <div class="history-social">
+                      <a href=""><i class="ri-twitter-fill"></i></a>
+                      <a href=""><i class="ri-facebook-fill"></i></a>
+                      <a href=""><i class="ri-instagram-fill"></i></a>
+                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                    </div>
+                  </div>
+                  <div class="col-md-6" data-aos="fade-right">
+                    <img src="{% static 'assets/img/history/OLUPOT.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+            </section>
+        
+            <section class="section">
+              <div class="container">
+                <div class="row align-items-center">
+                  <div class="col-md-4 ms-auto order-2">
+                    <h2 class="mb-4"><strong>1ST SICA MUBS PRESIDENT - MS. HOPE ASIIMWE</strong></h2>
+                    <p class="mb-4">
+                      Learning facilitator in digital marketing |Growing sales through creative digital marketing | Tech enthusiast | 1st SICA MUBS President 2018-2019
+                    </p>
+                    <div class="history-social">
+                      <a href=""><i class="ri-twitter-fill"></i></a>
+                      <a href=""><i class="ri-facebook-fill"></i></a>
+                      <a href=""><i class="ri-instagram-fill"></i></a>
+                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                    </div>
+                  </div>
+                  <div class="col-md-6" data-aos="fade-left">
+                    <img src="{% static 'assets/img/history/HOPE.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+            </section>
+        
+            <section class="section">
+              <div class="container">
+                <div class="row align-items-center">
+                  <div class="col-md-4 ms-auto order-2">
+                    <h2 class="mb-4"><strong>2ND SICA MUBS PRESIDENT - MR. CIRUS SUMIKA</strong></h2>
+                    <p class="mb-4">
+                      Founder & CEO Sumic Online, CEO Campus Face, Co-Founder My Hostel Place| Digital Influencer | Online Markets Strategist | Graphics Designer | Software Developer | Web Site Developer | 2nd SICA MUBS President 2019-2021
+                    </p>
+                    <div class="history-social">
+                      <a href=""><i class="ri-twitter-fill"></i></a>
+                      <a href=""><i class="ri-facebook-fill"></i></a>
+                      <a href=""><i class="ri-instagram-fill"></i></a>
+                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                    </div>
+                  </div>
+                  <div class="col-md-6" data-aos="fade-right">
+                    <img src="{% static 'assets/img/history/CIRUS.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+    </section>
+    <!-- End Project Section -->
+
+    <!-- ======= Modal Area ======= -->
+    {% include 'includes/profilemodal.html' %}
+
+    {% include 'passwordmgt/pw_change_form.html' %}
+    <!-- ======= End Modal Area ======= -->
+
+    <!-- ======= Clients Section ======= -->
+    {% include 'includes/clients.html' %}
+    <!-- End Clients Section -->
+
+  </main>
+  <!-- End #main -->
+
+  <!-- === End After Login View, Normal Member === -->
+
+  {% else %}
+
+  <!-- === Before Login View === -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex justify-cntent-center align-items-center">
+
+    <div class="wave">
+
+        <svg width="1920px" height="215px" viewBox="0 0 1920 215" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
+              <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,667 L1017.15166,667 L0,667 L0,439.134243 Z" id="Path"></path>
+            </g>
+          </g>
+        </svg>
+
+      </div>
+
+    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-item active">
+        <div class="carousel-container">
+          <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
+          <h2 class="animate__animated animate__fadeInDown">SICA HISTORY</h2>
+        </div>        
+      </div>
+    </div>
+  </section>
+  <!-- End Hero -->
+   
+  <!-- Main -->
+  <main id="main">
+
+    <!-- ======= Project Section ======= -->
+    <section id="project" class="project section-bg">
+        <div class="container" data-aos="fade-up">
+
+          <div class="section-title"></div>
+  
+          <div class="row">
+            <section class="section">
+              <div class="container">
+                <div class="row align-items-center">
+                  <div class="col-md-4 msauto order-2">
+                    <h2 class="mb-4"><strong>FOUNDER SICA - MR. SSENDI SAMUEL</strong></h2>
+                    <p class="mb-4" style="text-align: justify;">
+                      Experienced in CyberSecurity and IT Auditor with demonstrated leadership and innovative abilities | Skilled in Python, Cloud Engineering, Data Analysis, PHP, WordPress,
+                      Service Desk, Report Writing, and Threat & Vulnerability Management
+                      Pursued a Bachelor's degree in Business Computing focused in Information System Administration and Management from Makerere University Business School | Lecturer at MUBS
+                    </p>
+                    <div class="history-social">
+                      <a href=""><i class="ri-twitter-fill"></i></a>
+                      <a href=""><i class="ri-facebook-fill"></i></a>
+                      <a href=""><i class="ri-instagram-fill"></i></a>
+                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                    </div>
+                  </div>
+                  <div class="col-md-6" data-aos="fade-left">
+                    <img src="{% static 'assets/img/history/SSENDI.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+            </section>
+        
+            <section class="section">
+              <div class="container">
+                <div class="row align-items-center">
+                  <div class="col-md-4 ms-auto order-2">
+                    <h2 class="mb-4"><strong>PATRON - MR. CHARLES OLUPOT</strong></h2>
+                    <p class="mb-4" style="text-align: justify;">
+                      Director MUBS ICT Center Bugolobi. Program Manager, Project Planner, Researcher, Lecturer at MUBS, Management Consultant, Entreprenure, Business Strategist, Team Builder.
+                    </p>
+                    <div class="history-social">
+                      <a href=""><i class="ri-twitter-fill"></i></a>
+                      <a href=""><i class="ri-facebook-fill"></i></a>
+                      <a href=""><i class="ri-instagram-fill"></i></a>
+                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                    </div>
+                  </div>
+                  <div class="col-md-6" data-aos="fade-right">
+                    <img src="{% static 'assets/img/history/OLUPOT.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+            </section>
+        
+            <section class="section">
+              <div class="container">
+                <div class="row align-items-center">
+                  <div class="col-md-4 ms-auto order-2">
+                    <h2 class="mb-4"><strong>1ST SICA MUBS PRESIDENT - MS. HOPE ASIIMWE</strong></h2>
+                    <p class="mb-4">
+                      Learning facilitator in digital marketing |Growing sales through creative digital marketing | Tech enthusiast | 1st SICA MUBS President 2018-2019
+                    </p>
+                    <div class="history-social">
+                      <a href=""><i class="ri-twitter-fill"></i></a>
+                      <a href=""><i class="ri-facebook-fill"></i></a>
+                      <a href=""><i class="ri-instagram-fill"></i></a>
+                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                    </div>
+                  </div>
+                  <div class="col-md-6" data-aos="fade-left">
+                    <img src="{% static 'assets/img/history/HOPE.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+            </section>
+        
+            <section class="section">
+              <div class="container">
+                <div class="row align-items-center">
+                  <div class="col-md-4 ms-auto order-2">
+                    <h2 class="mb-4"><strong>2ND SICA MUBS PRESIDENT - MR. CIRUS SUMIKA</strong></h2>
+                    <p class="mb-4">
+                      Founder & CEO Sumic Online, CEO Campus Face, Co-Founder My Hostel Place| Digital Influencer | Online Markets Strategist | Graphics Designer | Software Developer | Web Site Developer | 2nd SICA MUBS President 2019-2021
+                    </p>
+                    <div class="history-social">
+                      <a href=""><i class="ri-twitter-fill"></i></a>
+                      <a href=""><i class="ri-facebook-fill"></i></a>
+                      <a href=""><i class="ri-instagram-fill"></i></a>
+                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                    </div>
+                  </div>
+                  <div class="col-md-6" data-aos="fade-right">
+                    <img src="{% static 'assets/img/history/CIRUS.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+    </section>
+    <!-- End Project Section -->
+
+    <!-- ======= Modal Area ======= -->
+    {% include 'includes/profilemodal.html' %}
+
+    {% include 'passwordmgt/pw_change_form.html' %}
+    <!-- ======= End Modal Area ======= -->
+
+    <!-- ======= Clients Section ======= -->
+    {% include 'includes/clients.html' %}
+    <!-- End Clients Section -->
+
+  </main>
+  <!-- End #main -->
+  
+  <!-- === End Before Login View === -->
+
+  {% endif %}
+
+  {% include 'includes/footer.html' %}
+
+</body>
+</html>

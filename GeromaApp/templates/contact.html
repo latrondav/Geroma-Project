@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  {% load static %}
+
+  <title>SICA MUBS - CONTACT</title>
+
+  {% include 'includes/head.html'%}
+
+  <body>
+  
+    {% include 'includes/header.html' %}
+
+    {% if user.is_superuser %}
+      
+      <!-- ======= Hero Section ======= -->
+      <section id="hero" class="d-flex justify-cntent-center align-items-center">
+  
+      <div class="wave">
+  
+          <svg width="1920px" height="215px" viewBox="0 0 1920 215" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
+                <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,667 L1017.15166,667 L0,667 L0,439.134243 Z" id="Path"></path>
+              </g>
+            </g>
+          </svg>
+  
+        </div>
+  
+      <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-item active">
+          <div class="carousel-container">
+            <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
+            <h2 class="animate__animated animate__fadeInDown">SICA CONTACT</h2> 
+          </div>
+        </div>
+      </div>
+      </section>
+      <!-- End Hero -->
+
+      <!-- Main -->
+      <main id="main">
+
+        <!-- ======= Contact Section ======= -->
+      <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+
+          <div class="section-title"></div>
+
+          <div class="row mt-1 d-flex justify-content-end" data-aos="fade-right" data-aos-delay="100">
+
+            <div class="col-lg-6">
+              <div class="info" style="height: 370px;">
+                <div class="form-group">
+                  <div class="text-center text-white">
+                    <h2><strong>SICA CONTACT DETAILS</strong></h2>
+                  </div>
+                </div>
+                <div class="address">
+                  <i class="bi bi-geo-alt"></i>
+                  <h4>Location:</h4>
+                  <p>A108 Adam Street, New York, NY 535022</p>
+                </div>
+
+                <div class="email">
+                  <i class="bi bi-envelope"></i>
+                  <h4>Email:</h4>
+                  <p>sicamubs@gmail.com</p>
+                </div>
+
+                <div class="phone">
+                  <i class="bi bi-phone"></i>
+                  <h4>Call:</h4>
+                  <p>+256 701 453639 or +256 787 269229</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 mt-5 mt-lg-0 " data-aos="fade-left" data-aos-delay="100">
+              <form action="/contact/" method="POST"  class="contact-form">
+                {% csrf_token %}
+                  <div class="form-group">
+                    <div class="text-center text-white">
+                      <h2><strong>CONTACT SICA</strong></h2>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <input type="text" name="contact_name" class="form-control" id="contact_name" placeholder="Your Name" required>
+                    </div>
+                    <div class="col-md-6 form-group mt-3 mt-md-0">
+                      <input type="email" class="form-control" name="contact_email" id="contact_email" placeholder="Your Email" required>
+                    </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <input type="text" class="form-control" name="contact_subjectt" id="contact_subject" placeholder="Subject" required>
+                  </div>
+                  <div class="form-group mt-3">
+                    <textarea class="form-control" name="contact_message" id="contact_message"rows="5" placeholder="Message" required></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="text-center">
+                      <button type="submit">SEND MESSAGE</button>
+                    </div>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section><!-- End Contact Section -->
+
+      <!-- ======= Modal Area ======= -->
+      {% include 'includes/profilemodal.html' %}
+
+      {% include 'passwordmgt/pw_change_form.html' %}
+      <!-- ======= End Modal Area ======= -->
+
+      <!-- ======= Clients Section ======= -->
+      {% include 'includes/clients.html' %}
+      <!-- End Clients Section -->
+
+      </main>
+      <!-- End #main -->
+
+
+
+
+
+    {% elif user.is_staff %}
+      
+      <!-- ======= Hero Section ======= -->
+      <section id="hero" class="d-flex justify-cntent-center align-items-center">
+  
+        <div class="wave">
+    
+            <svg width="1920px" height="215px" viewBox="0 0 1920 215" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
+                  <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,667 L1017.15166,667 L0,667 L0,439.134243 Z" id="Path"></path>
+                </g>
+              </g>
+            </svg>
+    
+          </div>
+    
+        <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-item active">
+            <div class="carousel-container">
+              <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
+              <h2 class="animate__animated animate__fadeInDown">SICA CONTACT</h2> 
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Hero -->
+  
+      <!-- Main -->
+      <main id="main">
+  
+          <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+          <div class="container" data-aos="fade-up">
+  
+            <div class="section-title"></div>
+  
+            <div class="row mt-1 d-flex justify-content-end" data-aos="fade-right" data-aos-delay="100">
+  
+              <div class="col-lg-6">
+                <div class="info" style="height: 370px;">
+                  <div class="form-group">
+                    <div class="text-center text-white">
+                      <h2><strong>SICA CONTACT DETAILS</strong></h2>
+                    </div>
+                  </div>
+                  <div class="address">
+                    <i class="bi bi-geo-alt"></i>
+                    <h4>Location:</h4>
+                    <p>A108 Adam Street, New York, NY 535022</p>
+                  </div>
+  
+                  <div class="email">
+                    <i class="bi bi-envelope"></i>
+                    <h4>Email:</h4>
+                    <p>sicamubs@gmail.com</p>
+                  </div>
+  
+                  <div class="phone">
+                    <i class="bi bi-phone"></i>
+                    <h4>Call:</h4>
+                    <p>+256 701 453639 or +256 787 269229</p>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-lg-6 mt-5 mt-lg-0 " data-aos="fade-left" data-aos-delay="100">
+                <form action="/contact/" method="POST"  class="contact-form">
+                  {% csrf_token %}
+                    <div class="form-group">
+                      <div class="text-center text-white">
+                        <h2><strong>CONTACT SICA</strong></h2>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 form-group">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                      </div>
+                      <div class="col-md-6 form-group mt-3 mt-md-0">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                      </div>
+                    </div>
+                    <div class="form-group mt-3">
+                      <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group mt-3">
+                      <textarea class="form-control" name="message" id="message"rows="5" placeholder="Message" required></textarea>
+                    </div>
+  
+                    <div class="form-group">
+                      <div class="text-center">
+                        <button type="submit">SEND MESSAGE</button>
+                      </div>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- End Contact Section -->
+  
+        <!-- ======= Modal Area ======= -->
+        {% include 'includes/profilemodal.html' %}
+
+        {% include 'passwordmgt/pw_change_form.html' %}
+        <!-- ======= End Modal Area ======= -->
+  
+        <!-- ======= Clients Section ======= -->
+        {% include 'includes/clients.html' %}
+        <!-- End Clients Section -->
+  
+      </main>
+      <!-- End #main -->
+
+
+
+
+
+    {% elif user.is_authenticated %}
+      
+      <!-- ======= Hero Section ======= -->
+      <section id="hero" class="d-flex justify-cntent-center align-items-center">
+  
+      <div class="wave">
+  
+          <svg width="1920px" height="215px" viewBox="0 0 1920 215" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
+                <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,667 L1017.15166,667 L0,667 L0,439.134243 Z" id="Path"></path>
+              </g>
+            </g>
+          </svg>
+  
+        </div>
+  
+      <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-item active">
+          <div class="carousel-container">
+            <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
+            <h2 class="animate__animated animate__fadeInDown">SICA CONTACT</h2> 
+          </div>
+        </div>
+      </div>
+      </section>
+      <!-- End Hero -->
+
+      <!-- Main -->
+      <main id="main">
+
+        <!-- ======= Contact Section ======= -->
+      <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+
+          <div class="section-title"></div>
+
+          <div class="row mt-1 d-flex justify-content-end" data-aos="fade-right" data-aos-delay="100">
+
+            <div class="col-lg-6">
+              <div class="info" style="height: 370px;">
+                <div class="form-group">
+                  <div class="text-center text-white">
+                    <h2><strong>SICA CONTACT DETAILS</strong></h2>
+                  </div>
+                </div>
+                <div class="address">
+                  <i class="bi bi-geo-alt"></i>
+                  <h4>Location:</h4>
+                  <p>A108 Adam Street, New York, NY 535022</p>
+                </div>
+
+                <div class="email">
+                  <i class="bi bi-envelope"></i>
+                  <h4>Email:</h4>
+                  <p>sicamubs@gmail.com</p>
+                </div>
+
+                <div class="phone">
+                  <i class="bi bi-phone"></i>
+                  <h4>Call:</h4>
+                  <p>+256 701 453639 or +256 787 269229</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 mt-5 mt-lg-0 " data-aos="fade-left" data-aos-delay="100">
+              <form action="/contact/" method="POST"  class="contact-form">
+                {% csrf_token %}
+                  <div class="form-group">
+                    <div class="text-center text-white">
+                      <h2><strong>CONTACT SICA</strong></h2>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="col-md-6 form-group mt-3 mt-md-0">
+                      <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                    </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                  </div>
+                  <div class="form-group mt-3">
+                    <textarea class="form-control" name="message" id="message"rows="5" placeholder="Message" required></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="text-center">
+                      <button type="submit">SEND MESSAGE</button>
+                    </div>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End Contact Section -->
+
+      <!-- ======= Modal Area ======= -->
+      {% include 'includes/profilemodal.html' %}
+
+      {% include 'passwordmgt/pw_change_form.html' %}
+      <!-- ======= End Modal Area ======= -->
+
+      <!-- ======= Clients Section ======= -->
+      {% include 'includes/clients.html' %}
+      <!-- End Clients Section -->
+
+      </main>
+      <!-- End #main -->
+
+
+
+
+
+
+    {% else %}
+      
+      <!-- ======= Hero Section ======= -->
+      <section id="hero" class="d-flex justify-cntent-center align-items-center">
+  
+      <div class="wave">
+  
+          <svg width="1920px" height="215px" viewBox="0 0 1920 215" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
+                <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,667 L1017.15166,667 L0,667 L0,439.134243 Z" id="Path"></path>
+              </g>
+            </g>
+          </svg>
+  
+        </div>
+  
+      <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-item active">
+          <div class="carousel-container">
+            <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
+            <h2 class="animate__animated animate__fadeInDown">SICA CONTACT</h2> 
+          </div>
+        </div>
+      </div>
+      </section>
+      <!-- End Hero -->
+
+      <!-- Main -->
+      <main id="main">
+
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+          <div class="container" data-aos="fade-up">
+
+            <div class="section-title"></div>
+
+            <div class="row mt-1 d-flex justify-content-end" data-aos="fade-right" data-aos-delay="100">
+
+              <div class="col-lg-6">
+                <div class="info" style="height: 370px;">
+                  <div class="form-group">
+                    <div class="text-center text-white">
+                      <h2><strong>SICA CONTACT DETAILS</strong></h2>
+                    </div>
+                  </div>
+                  <div class="address">
+                    <i class="bi bi-geo-alt"></i>
+                    <h4>Location:</h4>
+                    <p>A108 Adam Street, New York, NY 535022</p>
+                  </div>
+
+                  <div class="email">
+                    <i class="bi bi-envelope"></i>
+                    <h4>Email:</h4>
+                    <p>sicamubs@gmail.com</p>
+                  </div>
+
+                  <div class="phone">
+                    <i class="bi bi-phone"></i>
+                    <h4>Call:</h4>
+                    <p>+256 701 453639 or +256 787 269229</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6 mt-5 mt-lg-0 " data-aos="fade-left" data-aos-delay="100">
+                <form action="/contact/" method="POST"  class="contact-form">
+                  {% csrf_token %}
+                    <div class="form-group">
+                      <div class="text-center text-white">
+                        <h2><strong>CONTACT SICA</strong></h2>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 form-group">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                      </div>
+                      <div class="col-md-6 form-group mt-3 mt-md-0">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                      </div>
+                    </div>
+                    <div class="form-group mt-3">
+                      <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group mt-3">
+                      <textarea class="form-control" name="message" id="message"rows="5" placeholder="Message" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="text-center">
+                        <button type="submit">SEND MESSAGE</button>
+                      </div>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section><!-- End Contact Section -->
+
+        <!-- ======= Clients Section ======= -->
+        {% include 'includes/clients.html' %}
+        <!-- End Clients Section -->
+
+      </main>
+      <!-- End #main -->
+      
+    {% endif %}
+
+    {% include 'includes/footer.html' %}
+  
+  
+
+
+</body>
+</html>
