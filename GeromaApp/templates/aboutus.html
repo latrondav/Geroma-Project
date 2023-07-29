@@ -11,7 +11,7 @@
 
     {% include 'includes/header.html' %}
 
-    {% if user.is_authenticated %}
+    <!--  -->
 
     <!-- === After Login View, Normal Member === -->
     <!-- ======= Hero Section ======= -->
@@ -32,8 +32,8 @@
       <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
         <div class="carousel-item active">
           <div class="carousel-container">
-            <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
-            <h2 class="animate__animated animate__fadeInDown">ABOUT SICA</h2>
+            <img class="animate__animated animate__fadeInUp" src="{% static 'assets/img/geromalogoicon.png' %}" style="border-radius: 10rem;" alt="">
+            <h2 class="animate__animated animate__fadeInDown">ABOUT US</h2>
           </div>
         </div>
       </div>
@@ -46,118 +46,57 @@
     {% include 'passwordmgt/pw_change_form.html' %}
     <!--================ End Modal Area =================-->
 
-    <!-- ======= About Us Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title"></div>
-        <div class="about-boxs">
-          <div class="row about-box">
-            <h3 class="title">ABOUT SICA MUBS</h3>
-            <p class="description">
-              SICA is Students Information & Computing Association the MUBS ICT Association that officially came into existence in Makerere University Business School on 7th September 2018 with a launch with various administrators from MUBS.
-              It is initially a brain child of a group of Computing students under the faculty of Computing and Informatics who realised thee need not only to have a binding academic Association but also for it to act as a platform to impact students positively through equipping them with practical ICT skills and knowledge both given in and out of lectures of the different MUBS programs.
-            </p>
-
-            <div class="col-md-4">
-              <h3 class="title">MISION</h3>
-              <p class="description">
-                "To impact high quality and Advanced Technical Education and make a positive difference in students to become leaders in the I.T.Industry.”
-              </p>
-            </div>
-            <div class="col-md-4">
-              <h3 class="title">VISION</h3>
-            <p class="description">
-              “To Enhance Business with Technology, create the Best Personal Computing Experience to Students ,and to breed creative Professionals through Innovative Business I.T.Strategies.”
-            </p>
-            </div>
-            <div class="col-md-4">
-              <h3 class="title">MOTTO</h3>
-              <p class="description">
-                Empower Innovate & Motivate.
-              </p>
-            </div>
-          </div>
+<!-- ======= About Us Section ======= -->
+<section id="about" class="about">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2 class="text-white">About Geroma Logistics Limited</h2>
+    </div>
+    <div class="about-boxs">
+      <div class="row about-box">
+        <p class="description">
+          Geroma Logistics Limited is a specialized logistics partner with expertise in customs clearance, efficient
+          freight forwarding solutions, and expert tax consultation services. With over 15 years of experience, we have
+          built a strong reputation for dedication to client satisfaction and compliance with customs and tax
+          regulations. Our mission is to empower international trade, innovate logistics solutions, and motivate success
+          for our valued clients.
+        </p>
+      </div>
+      <div class="row about-box">
+        <div class="col-md-4">
+          <h3 class="title">Customs Clearance</h3>
+          <p class="description">
+            Our customs clearance services ensure smooth and hassle-free clearance of goods through customs procedures,
+            ensuring compliance with all regulations.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="title">Freight Forwarding</h3>
+          <p class="description">
+            We offer efficient freight forwarding solutions, ensuring timely and secure delivery of goods to their
+            destinations.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <h3 class="title">Tax Consultation</h3>
+          <p class="description">
+            Our expert tax consultation services provide valuable guidance and strategies to optimize tax-related
+            matters for our clients.
+          </p>
         </div>
       </div>
-    </section>
-    <!-- End About Us Section -->
+    </div>
+  </div>
+</section>
+<!-- End About Us Section -->
+
 
     <!-- ======= Clients Section ======= -->
     {% include 'includes/clients.html' %}
     <!-- End Clients Section -->
     <!-- === End After Login View, Normal Member === -->
 
-    {% else %}
 
-    <!-- === Before Login View === -->
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex justify-cntent-center align-items-center">
-
-      <div class="wave">
-
-          <svg width="1920px" height="215px" viewBox="0 0 1920 215" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-              <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
-                <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,667 L1017.15166,667 L0,667 L0,439.134243 Z" id="Path"></path>
-              </g>
-            </g>
-          </svg>
-
-        </div>
-
-      <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
-        <div class="carousel-item active">
-          <div class="carousel-container">
-            <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
-            <h2 class="animate__animated animate__fadeInDown">ABOUT SICA</h2>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End Hero -->
-
-    <!-- ======= About Us Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-        <div class="section-title"></div>
-        <div class="about-boxs">
-          <div class="row about-box">
-            <h3 class="title">ABOUT SICA MUBS</h3>
-            <p class="description">
-              SICA is Students Information & Computing Association the MUBS ICT Association that officially came into existence in Makerere University Business School on 7th September 2018 with a launch with various administrators from MUBS.
-              It is initially a brain child of a group of Computing students under the faculty of Computing and Informatics who realised thee need not only to have a binding academic Association but also for it to act as a platform to impact students positively through equipping them with practical ICT skills and knowledge both given in and out of lectures of the different MUBS programs.
-            </p>
-
-            <div class="col-md-4">
-              <h3 class="title">MISION</h3>
-              <p class="description">
-                "To impact high quality and Advanced Technical Education and make a positive difference in students to become leaders in the I.T.Industry.”
-              </p>
-            </div>
-            <div class="col-md-4">
-              <h3 class="title">VISION</h3>
-            <p class="description">
-              “To Enhance Business with Technology, create the Best Personal Computing Experience to Students ,and to breed creative Professionals through Innovative Business I.T.Strategies.”
-            </p>
-            </div>
-            <div class="col-md-4">
-              <h3 class="title">MOTTO</h3>
-              <p class="description">
-                Empower Innovate & Motivate.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End About Us Section -->
-
-    <!-- ======= Clients Section ======= -->
-    {% include 'includes/clients.html' %}
-    <!-- End Clients Section -->
-    <!-- === End Before Login View === -->
-    
-    {% endif %}
 
     {% include 'includes/footer.html' %}
 

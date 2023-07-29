@@ -621,7 +621,7 @@ h6 {
   height: 80vh;
   overflow: hidden;
   position: relative;
-  background: url("../img/hero-bg.jpg") top center;
+  background: url("../img/hero-bg.png") top center;
   background-size: cover;
   position: relative;
   margin-bottom: -90px;
@@ -814,18 +814,10 @@ section {
 # About Us
 --------------------------------------------------------------*/
 .about {
-  padding: 140px 0;
+  padding: 100px 0;
   position: relative;
-}
-
-.about:before {
-  content: "";
-  background: rgba(232, 223, 223, 0.75);
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0; 
+  background: linear-gradient(rgba(5, 87, 158, 0.9), rgba(5, 87, 158, 0.6)), url("/static/assets/img/about2.jpg") center/cover no-repeat;
+  color: #fff;
 }
 
 .about .container {
@@ -833,26 +825,22 @@ section {
 }
 
 .about .about-boxs .about-box {
-  background: rgba(5, 87, 158, 0.9);
+  background: rgba(5, 87, 158, 0.7);
   border-radius: 2.5rem;
+  margin-bottom: 30px;
+  padding: 30px;
+  text-align: center;
 }
 
 .about .about-boxs .about-box .title {
-  padding: 30px 30px 30px 30px;
   font-size: 30px;
   font-weight: 700;
-  margin-bottom: 5px;
-  color: #fff;
-  text-align: center;
-  text-decoration: solid;
+  margin-bottom: 10px;
 }
 
 .about .about-boxs .about-box .description {
-  padding: 30px 30px 30px 30px;
-  margin-bottom: 0;
   font-size: 20px;
-  color: #fff;
-  text-align: center;
+  line-height: 1.6;
 }
 
 @media (max-width: 992px) {
@@ -1407,12 +1395,18 @@ section {
 /*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/
-.team .member {
+#team.section-bg {
+  background: linear-gradient(rgba(5, 87, 158, 0.9), rgba(5, 87, 158, 0.6)), url('http://127.0.0.1:8000/static/assets/img/about1.jpg') center/cover no-repeat;
+  color: #fff;
+  margin-top: 20px;
+}
+
+#team .member {
   position: relative;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   padding: 30px;
   border-radius: 10px;
-  background: #fff;
+  background: rgba(5, 87, 158, 0.7);
 }
 
 .team .member .pic {
@@ -1437,7 +1431,7 @@ section {
   font-weight: 700;
   margin-bottom: 5px;
   font-size: 20px;
-  color: #05579e;
+  color: #fff;
 }
 
 .team .member span {
@@ -1681,26 +1675,37 @@ section {
 --------------------------------------------------------------*/
 .contact {
   position: relative;
-}
-
-.contact:before {
-  content: "";
-  background: rgba(255, 255, 255, 0.7);
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
+  background: linear-gradient(rgba(5, 87, 158, 0.9), rgba(5, 87, 158, 0.6)), url('http://127.0.0.1:8000/static/assets/img/about1.jpg') center/cover no-repeat;
+  color: #fff;
+  padding: 100px 0;
+  /* Add some padding to the top and bottom for better spacing */
 }
 
 .contact .container {
   position: relative;
 }
 
+.contact .section-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.contact .section-title h2 {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.contact .section-title p {
+  font-size: 18px;
+  font-weight: 300;
+  margin-top: 10px;
+}
+
 .contact .info {
   background: rgba(5, 87, 158, 0.9);
   width: 100%;
   border-radius: 5rem;
+  padding: 30px;
 }
 
 .contact .info i {
@@ -1715,21 +1720,18 @@ section {
   align-items: center;
   border-radius: 50px;
   transition: all 0.3s ease-in-out;
+  margin-right: 10px;
 }
 
 .contact .info h4 {
-  padding: 0 0 0 60px;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
   margin-bottom: 5px;
-  color: #fff;
 }
 
 .contact .info p {
-  padding: 0 0 0 60px;
+  font-size: 16px;
   margin-bottom: 0;
-  font-size: 14px;
-  color: #fff;
 }
 
 .contact .info .email,
@@ -1741,6 +1743,7 @@ section {
   width: 100%;
   background: rgba(5, 87, 158, 0.9);
   border-radius: 5rem;
+  padding: 40px;
 }
 
 .contact .contact-form .form-group {
@@ -1750,33 +1753,55 @@ section {
 
 .contact .contact-form input,
 .contact .contact-form textarea {
-  border-radius: 4px;
-  box-shadow: none;
-  font-size: 14px;
-  border-radius: 2rem;
-}
-
-.contact .contact-form input {
-  height: 44px;
+  /* Adjust input and textarea styles as per your preference */
+  width: 100%;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #444;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .contact .contact-form textarea {
-  padding: 10px 12px;
+  resize: vertical;
 }
 
 .contact .contact-form button[type=submit] {
-  border: 0;
-  padding: 10px 32px;
-  color: #0880e8;
-  transition: 0.4s;
+  /* Modify the button styles for a more attractive appearance */
+  display: inline-block;
+  padding: 12px 36px;
+  background-color: #0880e8;
+  color: #fff;
+  border: none;
   border-radius: 50px;
-  border: 2px solid #f6b024;
-  background: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .contact .contact-form button[type=submit]:hover {
-  background: #f6b024;
-  color: #fff;
+  background-color: #0672c5;
+}
+
+/* Additional styles for the map container */
+.contact .map-container {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%;
+  /* 16:9 aspect ratio for responsive sizing */
+}
+
+.contact .map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 @-webkit-keyframes animate-loading {

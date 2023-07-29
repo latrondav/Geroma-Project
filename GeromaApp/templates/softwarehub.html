@@ -11,8 +11,6 @@
 
     {% include 'includes/header.html' %}
 
-    {% if user.is_authenticated %}
-
       <!-- === After Login View === -->
       
       <!-- ======= Hero Section ======= -->
@@ -33,112 +31,8 @@
         <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
           <div class="carousel-item active">
             <div class="carousel-container">
-              <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
-              <h2 class="animate__animated animate__fadeInDown">SICA SOFTWARE HUB</h2>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- End Hero -->
-
-      <!--================ Model Area =================-->
-      {% include 'includes/profilemodal.html' %}
-
-      {% include 'passwordmgt/pw_change_form.html' %}
-      <!--================ End Modal Area =================-->
-
-      <!-- Main -->
-      <main id="main">
-
-        <!-- ======= Software Hub Section ======= -->
-        <section id="softwarehub" class="softwarehub">
-          <div class="container" data-aos="fade-up">
-            <div class="section-title"></div>
-            <div class="row">
-              <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="box">
-                  <h3>Oracle 11G</h3>
-                  <P>
-                    Oracle Database Enterprise Edition Oracle Database Enterprise Edition provides the performance.
-                  </P>
-                  <div class="btn-wrap">
-                    <a href="#" class="btn-download">Download Oracle 11g</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
-                <div class="box">
-                  <h3>Android Studio</h3>
-                  <P>
-                    Android Studio is a new and fully integrated development environment.
-                  </P>
-                  <div class="btn-wrap">
-                    <a href="#" class="btn-download">Download Android Studio</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
-                <div class="box">
-                  <h3>Windows 10 64 Bit</h3>
-                  <p>
-                    Windows 10 64-bit is recommended if you have 4 GB or more RAM. Windows 10 64-bit supports up to 2 TB of RAM, while Windows 10 32-bit can utilize up to 3.2 GB.
-                  </p>
-                  <div class="btn-wrap">
-                    <a href="#" class="btn-download">Download Windows 10</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
-                <div class="box">
-                  <h3>Microsoft Office 2021</h3>
-                  <p>
-                    The suite, first announced by Bill Gates over 30 years ago, included Word, Excel and PowerPoint, or, in other words, The Holy Trinity of software known as Microsoft Office. 
-                  </p>
-                  <div class="btn-wrap">
-                    <a href="#" class="btn-download">Download Microsoft Office 2021</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section><!-- End Software Hub Section -->
-
-        <!-- ======= Clients Section ======= -->
-        {% include 'includes/clients.html' %}
-        <!-- End Clients Section -->
-
-      </main>
-      <!-- End #main -->
-
-      <!-- === End After Login View === -->
-
-    {% else %}
-
-      <!-- === Before Login View === -->
-
-      <!-- ======= Hero Section ======= -->
-      <section id="hero" class="d-flex justify-cntent-center align-items-center">
-
-        <div class="wave">
-
-            <svg width="1920px" height="215px" viewBox="0 0 1920 215" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
-                  <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,667 L1017.15166,667 L0,667 L0,439.134243 Z" id="Path"></path>
-                </g>
-              </g>
-            </svg>
-
-          </div>
-
-        <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
-          <div class="carousel-item active">
-            <div class="carousel-container">
-              <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
-              <h2 class="animate__animated animate__fadeInDown">SICA SOFTWARE HUB</h2>
+              <img src="{% static 'assets/img/geromalogoicon.png' %}" style="border-radius: 2rem;" alt="">
+              <h2 class="animate__animated animate__fadeInDown">REQUEST A TAX RATE</h2>
             </div>
           </div>
         </div>
@@ -148,61 +42,78 @@
       <!-- Main -->
       <main id="main">
 
-        <!-- ======= Software Hub Section ======= -->
-        <section id="softwarehub" class="softwarehub">
-          <div class="container" data-aos="fade-up">
-            <div class="section-title"></div>
-            <div class="row">
-              <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="box">
-                  <h3>Oracle 11G</h3>
-                  <P>
-                    Oracle Database Enterprise Edition Oracle Database Enterprise Edition provides the performance.
-                  </P>
-                  <div class="btn-wrap">
-                    <a href="#" class="btn-download">Login To Download</a>
-                  </div>
-                </div>
-              </div>
+<section id="history" class="history section-bg"
+  style="background: linear-gradient(rgba(5, 87, 158, 0.9), rgba(5, 87, 158, 0.6)), url('{% static 'assets/img/about1.jpg' %}') center/cover no-repeat; color: #fff;">
+  <div class="container" data-aos="fade-up">
 
-              <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
-                <div class="box">
-                  <h3>Android Studio</h3>
-                  <P>
-                    Android Studio is a new and fully integrated development environment.
-                  </P>
-                  <div class="btn-wrap">
-                    <a href="#" class="btn-download">Login To Download</a>
-                  </div>
-                </div>
-              </div>
+    <div class="section-title">
+      <h2 class="text-white">Our Team</h2>
+    </div>
 
-              <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
-                <div class="box">
-                  <h3>Windows 10 64 Bit</h3>
-                  <p>
-                    Windows 10 64-bit is recommended if you have 4 GB or more RAM. Windows 10 64-bit supports up to 2 TB of RAM, while Windows 10 32-bit can utilize up to 3.2 GB.
-                  </p>
-                  <div class="btn-wrap">
-                    <a href="#" class="btn-download">Login To Download</a>
-                  </div>
-                </div>
-              </div>
 
-              <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="400">
-                <div class="box">
-                  <h3>Microsoft Office 2021</h3>
-                  <p>
-                    The suite, first announced by Bill Gates over 30 years ago, included Word, Excel and PowerPoint, or, in other words, The Holy Trinity of software known as Microsoft Office. 
-                  </p>
-                  <div class="btn-wrap">
-                    <a href="#" class="btn-download">Login To Download</a>
-                  </div>
-                </div>
+    <!-- Tax Calculation Form -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-bg" data-aos="fade-up" style="border-radius: 15px;">
+          <div class="card-body">
+            <h4 class="card-title"><strong>Tax Calculation Form</strong></h4>
+            <form id="taxCalcForm">
+              <div class="form-group">
+                <label for="cargoValue">Cargo Value:</label>
+                <input type="number" class="form-control" id="cargoValue" required>
               </div>
+              <div class="form-group">
+                <label for="cargoType">Cargo Type:</label>
+                <select class="form-control" id="cargoType" required>
+                  <option value="normal">Normal</option>
+                  <option value="hazardous">Hazardous</option>
+                  <option value="fragile">Fragile</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Calculate Taxes</button>
+            </form>
+            <div id="taxCalcResult" style="display: none;">
+              <h4><strong>Tax Calculation Result</strong></h4>
+              <p id="resultText"></p>
             </div>
           </div>
-        </section><!-- End Software Hub Section -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Additional JavaScript to handle the tax calculation form -->
+<script>
+  // Function to handle the form submission and calculate taxes
+  function calculateTaxes(event) {
+    event.preventDefault();
+
+    const cargoValue = parseFloat(document.getElementById('cargoValue').value);
+    const cargoType = document.getElementById('cargoType').value;
+
+    // Perform the tax calculation based on the provided data
+    // For example, you can use simple calculations or more complex logic here
+    // For demonstration purposes, let's assume a basic tax calculation formula:
+    let taxAmount;
+    if (cargoType === 'normal') {
+      taxAmount = cargoValue * 0.1; // 10% tax for normal cargo
+    } else if (cargoType === 'hazardous') {
+      taxAmount = cargoValue * 0.15; // 15% tax for hazardous cargo
+    } else if (cargoType === 'fragile') {
+      taxAmount = cargoValue * 0.05; // 5% tax for fragile cargo
+    }
+
+    // Display the tax calculation result
+    document.getElementById('resultText').innerText = `The calculated tax amount is $${taxAmount.toFixed(2)}.`;
+    document.getElementById('taxCalcResult').style.display = 'block';
+  }
+
+  // Add event listener to the form for form submission
+  document.getElementById('taxCalcForm').addEventListener('submit', calculateTaxes);
+</script>
+
 
         <!-- ======= Clients Section ======= -->
         {% include 'includes/clients.html' %}
@@ -210,10 +121,6 @@
 
       </main>
       <!-- End #main -->
-
-      <!-- === End Before Login View === -->
-      
-    {% endif %}
 
     {% include 'includes/footer.html' %}
    

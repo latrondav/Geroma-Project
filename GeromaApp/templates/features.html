@@ -7,11 +7,41 @@
 
   {% include 'includes/head.html'%}
 
+      <style>
+        .card-bg {
+          background: rgba(5, 87, 158, 0.7);
+          border-radius: 2.5rem;
+          margin-bottom: 30px;
+          padding: 30px;
+          text-align: center;
+        }
+      
+        .card-bg .card-title {
+          /* font-size: 30px;
+              font-weight: 700; */
+          margin-bottom: 10px;
+          color: #fff;
+        }
+      
+        .card-bg .card-text {
+          font-size: 20px;
+          line-height: 1.6;
+          color: #fff;
+        }
+      
+        .card-bg img {
+          border-radius: 25%;
+        }
+      
+        .history-social a {
+          color: #fff;
+          margin-right: 10px;
+        }
+      </style>
+
   <body>
 
     {% include 'includes/header.html' %}
-
-    {% if user.is_superuser %}
 
       <!-- === After Login View, Admin === -->
       
@@ -33,8 +63,8 @@
         <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
           <div class="carousel-item active">
             <div class="carousel-container">
-              <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
-              <h2 class="animate__animated animate__fadeInDown">SICA FEATURES</h2>
+              <img src="{% static 'assets/img/geromalogoicon.png' %}" style="border-radius: 2rem;" alt="">
+              <h2 class="animate__animated animate__fadeInDown">OUR TEAM</h2>
             </div>        
           </div>
         </div>
@@ -44,216 +74,107 @@
 
       <!-- Main -->
       <main id="main">
-        <!-- ======= Feature Section ======= -->
-        <section id="project" class="project section-bg">
-            <div class="container" data-aos="fade-up">
-              <div class="section-title"></div>
-              <div class="row">
-                <div class="text-center">
-                  <a class="btn btn-feature" href="/vieworders/"><strong>VIEW SICAMUBS ORDERS</strong></a>
-                </div>
-
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4"><strong>THE SICA MUBS SHIRT</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          The SICA MUBS Shirt is Always customised for the SICA Executives. This Uniquely Identifies the SICA Executives from other Members.
-                        </p>
-                        <a class="btn btn-feature" data-toggle="modal" data-target="#OrderFormModal"><strong>ORDER EXECUTIVE SHIRT</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-left">
-                        <img src="{% static 'assets/img/features/sicashirt.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-            
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4" style="text-align: right;"><strong>THE SICA MUBS T-SHIRT</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          The SICA MUBS T-Shirt is another SICA MUBS Feature that is Open Source to All SICA Members and the Public.
-                        </p>
-                        <a class="btn btn-feature" data-toggle="modal" data-target="#OrderFormModal"><strong>ORDER SICAMUBS T-SHIRT</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-right">
-                        <img src="{% static 'assets/img/features/sicatshirt.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-            
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4"><strong>THE SICA MUBS ID</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          All fully registered SICA Members are given SICA ID's that come with Special Previlleges such free Visits in different SICA out Reaches Like Multi Choice, Abacom, Andela, Supercom Ltd among others for industry training, Pratice and Training in the business world.
-                        </p>
-                        <a class="btn btn-feature" data-toggle="modal" data-target="#OrderFormModal"><strong>ORDER SICAMUBS ID</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-left">
-                        <img src="{% static 'assets/img/features/sicaid.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-            
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4" style="text-align: right;"><strong>SICA AWARDS & CERTIFICATION</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          SICA Awards & Certification are Bi-annually done always After the ICT week which also happens Bi-annually. All Active Participants During the week are Awarded Certificates of Attaining the Skills as a special recogonition that they are certified in a particular Skill.
-                        </p>
-                        <a class="btn btn-feature" href="/events/"><strong>PARTICIPATE IN EVENTS</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-right">
-                        <img src="{% static 'assets/img/features/sicaawards&certificates.jfif' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4"><strong>THE SICA MUBS ONLINE MAGAZINE</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          The SICA MUBS Online Magazine is made up of SICA Events, Programs, SICA MUBS Pictorial, SICA Carbinets, ICT related Informations, Students Innovations & Startups among Other. The Magazine is Open Source to the Public and Can be downloaded by anyone.
-                        </p>
-                        <a class="btn btn-feature"><strong>READ MAGAZINE</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-left">
-                        <img src="{% static 'assets/img/features/sicamagazine.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4" style="text-align: right;"><strong>SICA MUBS CONSTITUITION</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          SICA MUBS CONSTITUITION
-                        </p>
-                        <a class="btn btn-feature"><strong>DOWNLOAD CONSTITUITION</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-right">
-                        <img src="{% static 'assets/img/features/' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="row text-center">
-                        <h4>YOUR ORDERS</h4>
-                      </div>
-                      {% if error %}
-                        <div class="alert alert-danger text-center h4">
-                          <strong>Sorry!, {{error}}</strong>
-                        </div>
-                      {% else %} 
-                        <div class="row table-responsive">
-                          <table class="table">
-                          <thead>
-                            <tr class="text-center">
-                              <th scope="col">ORDER ID</th>
-                              <th scope="col">EXECUTIVE SHIRT ORDERS</th>
-                              <th scope="col">SICAMUBS T-SHIRT ORDERS</th>
-                              <th scope="col">SICAMUBS ID</th>
-                              <th scope="col">ORDER STATUS</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {% for Your_Order in Your_Orders %}
-                              <tr class="text-center">
-                                <td>{{ Your_Order.id }}</td>
-                                <td>{{ Your_Order.order_exec_shirt }}</td>
-                                <td>{{ Your_Order.order_tshirt }}</td>
-                                <td>{{ Your_Order.order_sicaid }}</td>
-                                <td>{{ Your_Order.order_status }}</td>
-                              </tr>
-                            {% endfor %}
-                          </tbody>
-                          </table>
-                        </div>
-                      {% endif %}
-                    </div>
-                  </div>
-                </section>
-              </div>
+        <!-- ======= Team Section ======= -->
+        <section id="team" class="team section-bg">
+          <div class="container" data-aos="fade-up">
+        
+            <div class="section-title">
+              <!-- <h2 class="text-white">Our Team</h2> -->
             </div>
-        </section>
-        <!-- End Feature Section -->
-
-        <!--================ Model Area =================-->    
-        <div class="modal fade" id="OrderFormModal" tabindex="-1" role="dialog" aria-labelledby="OrderFormModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close btn-danger" style="border-radius: 10rem;"data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+        
+            <div class="row">
+              <div class="col-lg-3"></div>
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="member d-flex align-items-start">
+                  <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>Walter White</h4>
+                    <span>Chief Executive Officer</span>
+                    <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
+                    <div class="social">
+                      <a href=""><i class="ri-twitter-fill"></i></a>
+                      <a href=""><i class="ri-facebook-fill"></i></a>
+                      <a href=""><i class="ri-instagram-fill"></i></a>
+                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                    </div>
+                  </div>
                 </div>
-              <div class="modal-body">
-                <form action="/submitorder/" method="POST" class="home-form">
-                  {% csrf_token %}
-                    <div class="form-group">
-                      <div class="text-center">
-                        <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="text-center text-white">
-                        <h2>ORDER FORM</h2>
-                      </div>
-                    </div>
-                    <div class="form-group text-center">
-                      <div class="text-white"><label><strong>SICAMUBS Executive Shirt</strong></label></div>
-                      <input type="number" class="form-control text-center" style="border-radius: 5rem;" id="order_exec_shirt" name="order_exec_shirt" placeholder="number of executive shirts">
-                    </div>
-                    <div class="form-group text-center">
-                      <div class="text-white"><label><strong>SICAMUBS T-Shirt</strong></label></div>
-                      <input type="number" class="form-control text-center" style="border-radius: 5rem;" id="order_tshirt" name="order_tshirt" placeholder="number of tshirts">
-                    </div>
-                    <div class="form-group">
-                      <div class="text-center text-white">
-                        <input type="radio" id="i_dont_have_sicamubs_id" name="order_sicaid" value="MAKE MY SICAMUBS ID">
-                        <label for="i_dont_have_sicamubs_id"><strong>ORDER SICAMUBS ID</strong></label>
-                      </div>
-                      <div class="text-center text-white">
-                        <input type="radio" id="i_already_have_sicamubs_id" name="order_sicaid" value="ALREADY HAVE SICAMUBS ID">
-                        <label for="i_already_have_sicamubs_id"><strong>I ALREADY HAVE SICAMUBS ID</strong></label>
-                      </div>  
-                    </div>
-                    <div class="form-group">
-                      <div class="text-center">
-                        <button type="submit" class="btn home-btn"><strong>SUBMIT ORDER</strong></button>
-                      </div>
-                    </div>
-                </form>
               </div>
+              <div class="col-lg-3"></div>
+
+              <div class="col-lg-6 mt-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="member d-flex align-items-start">
+                  <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>Sarah Jhonson</h4>
+                    <span>Product Manager</span>
+                    <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
+                    <div class="social">
+                      <a href=""><i class="ri-twitter-fill"></i></a>
+                      <a href=""><i class="ri-facebook-fill"></i></a>
+                      <a href=""><i class="ri-instagram-fill"></i></a>
+                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
+              <div class="col-lg-6 mt-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="member d-flex align-items-start">
+                  <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>William Anderson</h4>
+                    <span>CTO</span>
+                    <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
+                    <div class="social">
+                      <a href=""><i class="ri-twitter-fill"></i></a>
+                      <a href=""><i class="ri-facebook-fill"></i></a>
+                      <a href=""><i class="ri-instagram-fill"></i></a>
+                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
+              <div class="col-lg-6 mt-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="member d-flex align-items-start">
+                  <div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>Amanda Jepson</h4>
+                    <span>Accountant</span>
+                    <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
+                    <div class="social">
+                      <a href=""><i class="ri-twitter-fill"></i></a>
+                      <a href=""><i class="ri-facebook-fill"></i></a>
+                      <a href=""><i class="ri-instagram-fill"></i></a>
+                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6 mt-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="member d-flex align-items-start">
+                  <div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>Amanda Jepson</h4>
+                    <span>Accountant</span>
+                    <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
+                    <div class="social">
+                      <a href=""><i class="ri-twitter-fill"></i></a>
+                      <a href=""><i class="ri-facebook-fill"></i></a>
+                      <a href=""><i class="ri-instagram-fill"></i></a>
+                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
             </div>
+        
           </div>
-        </div>
-
-        {% include 'includes/profilemodal.html' %}
-
-        {% include 'passwordmgt/pw_change_form.html' %}
-        <!--================ End Modal Area =================-->
+        </section>
+        <!-- End Team Section -->
 
         <!-- ======= Clients Section ======= -->
         {% include 'includes/clients.html' %}
@@ -262,658 +183,6 @@
       </main>
       <!-- End #main -->
       <!-- === End After Login View,  Admin === -->
-
-    {% elif user.is_staff %}
-
-      <!-- === After Login View, Executive Member === -->
-    
-      <!-- ======= Hero Section ======= -->
-      <section id="hero" class="d-flex justify-cntent-center align-items-center">
-        <div class="wave">
-
-            <svg width="1920px" height="215px" viewBox="0 0 1920 215" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
-                  <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,667 L1017.15166,667 L0,667 L0,439.134243 Z" id="Path"></path>
-                </g>
-              </g>
-            </svg>
-
-        </div>
-
-        <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
-          <div class="carousel-item active">
-            <div class="carousel-container">
-              <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
-              <h2 class="animate__animated animate__fadeInDown">SICA FEATURES</h2>
-            </div>        
-          </div>
-        </div>
-      </section>
-      <!-- End Hero -->
-
-      <!-- Main -->
-      <main id="main">
-        
-        <!-- ======= Feature Section ======= -->
-        <section id="project" class="project section-bg">
-            <div class="container" data-aos="fade-up">
-              <div class="section-title"></div>
-              <div class="row">
-                <div class="text-center">
-                  <a class="btn btn-feature" href="/vieworders/"><strong>VIEW SICAMUBS ORDERS</strong></a>
-                </div>
-
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4"><strong>THE SICA MUBS SHIRT</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          The SICA MUBS Shirt is Always customised for the SICA Executives. This Uniquely Identifies the SICA Executives from other Members.
-                        </p>
-                        <a class="btn btn-feature" data-toggle="modal" data-target="#OrderFormModal"><strong>ORDER EXECUTIVE SHIRT</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-left">
-                        <img src="{% static 'assets/img/features/sicashirt.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-            
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4" style="text-align: right;"><strong>THE SICA MUBS T-SHIRT</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          The SICA MUBS T-Shirt is another SICA MUBS Feature that is Open Source to All SICA Members and the Public.
-                        </p>
-                        <a class="btn btn-feature" data-toggle="modal" data-target="#OrderFormModal"><strong>ORDER SICAMUBS T-SHIRT</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-right">
-                        <img src="{% static 'assets/img/features/sicatshirt.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-            
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4"><strong>THE SICA MUBS ID</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          All fully registered SICA Members are given SICA ID's that come with Special Previlleges such free Visits in different SICA out Reaches Like Multi Choice, Abacom, Andela, Supercom Ltd among others for industry training, Pratice and Training in the business world.
-                        </p>
-                        <a class="btn btn-feature" data-toggle="modal" data-target="#OrderFormModal"><strong>ORDER SICAMUBS ID</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-left">
-                        <img src="{% static 'assets/img/features/sicaid.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-            
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4" style="text-align: right;"><strong>SICA AWARDS & CERTIFICATION</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          SICA Awards & Certification are Bi-annually done always After the ICT week which also happens Bi-annually. All Active Participants During the week are Awarded Certificates of Attaining the Skills as a special recogonition that they are certified in a particular Skill.
-                        </p>
-                        <a class="btn btn-feature" href="/events/"><strong>PARTICIPATE IN EVENTS</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-right">
-                        <img src="{% static 'assets/img/features/sicaawards&certificates.jfif' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4"><strong>THE SICA MUBS ONLINE MAGAZINE</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          The SICA MUBS Online Magazine is made up of SICA Events, Programs, SICA MUBS Pictorial, SICA Carbinets, ICT related Informations, Students Innovations & Startups among Other. The Magazine is Open Source to the Public and Can be downloaded by anyone.
-                        </p>
-                        <a class="btn btn-feature"><strong>READ MAGAZINE</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-left">
-                        <img src="{% static 'assets/img/features/sicamagazine.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4" style="text-align: right;"><strong>SICA MUBS CONSTITUITION</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          SICA MUBS CONSTITUITION
-                        </p>
-                        <a class="btn btn-feature"><strong>DOWNLOAD CONSTITUITION</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-right">
-                        <img src="{% static 'assets/img/features/' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="row text-center">
-                        <h4>YOUR ORDERS</h4>
-                      </div>
-                      {% if error %}
-                        <div class="alert alert-danger text-center h4">
-                          <strong>Sorry!, {{error}}</strong>
-                        </div>
-                      {% else %} 
-                        <div class="row">
-                        <table class="table">
-                          <thead>
-                            <tr class="text-center">
-                              <th scope="col">ORDER ID</th>
-                              <th scope="col">EXECUTIVE SHIRT ORDERS</th>
-                              <th scope="col">SICAMUBS T-SHIRT ORDERS</th>
-                              <th scope="col">SICAMUBS ID</th>
-                              <th scope="col">ORDER STATUS</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {% for Your_Order in Your_Orders %}
-                              <tr class="text-center">
-                                <td>{{ Your_Order.id }}</td>
-                                <td>{{ Your_Order.order_exec_shirt }}</td>
-                                <td>{{ Your_Order.order_tshirt }}</td>
-                                <td>{{ Your_Order.order_sicaid }}</td>
-                                <td>{{ Your_Order.order_status }}</td>
-                              </tr>
-                            {% endfor %}
-                          </tbody>
-                        </table>
-                        </div>
-                      {% endif %}
-                    </div>
-                  </div>
-                </section>
-              </div>
-            </div>
-        </section>
-        <!-- End Feature Section -->
-
-        <!--================ Model Area =================-->    
-        <div class="modal fade" id="OrderFormModal" tabindex="-1" role="dialog" aria-labelledby="OrderFormModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close btn-danger" style="border-radius: 10rem;"data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-              <div class="modal-body">
-                <form action="/submitorder/" method="POST" class="home-form">
-                  {% csrf_token %}
-                    <div class="form-group">
-                      <div class="text-center">
-                        <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="text-center text-white">
-                        <h2>ORDER FORM</h2>
-                      </div>
-                    </div>
-                    <div class="form-group text-center">
-                      <div class="text-white"><label><strong>SICAMUBS Executive Shirt</strong></label></div>
-                      <input type="number" class="form-control text-center" style="border-radius: 5rem;" id="order_exec_shirt" name="order_exec_shirt" placeholder="number of executive shirts">
-                    </div>
-                    <div class="form-group text-center">
-                      <div class="text-white"><label><strong>SICAMUBS T-Shirt</strong></label></div>
-                      <input type="number" class="form-control text-center" style="border-radius: 5rem;" id="order_tshirt" name="order_tshirt" placeholder="number of tshirts">
-                    </div>
-                    <div class="form-group">
-                      <div class="text-center text-white">
-                        <input type="radio" id="i_dont_have_sicamubs_id" name="order_sicaid" value="MAKE MY SICAMUBS ID">
-                        <label for="i_dont_have_sicamubs_id"><strong>ORDER SICAMUBS ID</strong></label>
-                      </div>
-                      <div class="text-center text-white">
-                        <input type="radio" id="i_already_have_sicamubs_id" name="order_sicaid" value="ALREADY HAVE SICAMUBS ID">
-                        <label for="i_already_have_sicamubs_id"><strong>I ALREADY HAVE SICAMUBS ID</strong></label>
-                      </div>  
-                    </div>
-                    <div class="form-group">
-                      <div class="text-center">
-                        <button type="submit" class="btn home-btn"><strong>SUBMIT ORDER</strong></button>
-                      </div>
-                    </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {% include 'includes/profilemodal.html' %}
-
-        {% include 'passwordmgt/pw_change_form.html' %}
-        <!--================ End Modal Area =================-->
-
-        <!-- ======= Clients Section ======= -->
-        {% include 'includes/clients.html' %}
-        <!-- End Clients Section -->
-
-      </main>
-      <!-- End #main -->
-
-      <!-- === End After Login View, Executive Member === -->
-
-    {% elif user.is_active %}
-
-      <!-- === After Login View, Normal Member === -->
-      
-      <!-- ======= Hero Section ======= -->
-      <section id="hero" class="d-flex justify-cntent-center align-items-center">
-        <div class="wave">
-
-            <svg width="1920px" height="215px" viewBox="0 0 1920 215" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
-                  <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,667 L1017.15166,667 L0,667 L0,439.134243 Z" id="Path"></path>
-                </g>
-              </g>
-            </svg>
-
-        </div>
-
-        <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
-          <div class="carousel-item active">
-            <div class="carousel-container">
-              <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
-              <h2 class="animate__animated animate__fadeInDown">SICA FEATURES</h2>
-            </div>        
-          </div>
-        </div>
-      </section>
-      <!-- End Hero -->
-
-      <!-- Main -->
-      <main id="main">
-
-        <!-- ======= Feature Section ======= -->
-        <section id="project" class="project section-bg">
-            <div class="container" data-aos="fade-up">
-              <div class="section-title"></div>
-              <div class="row">
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4"><strong>THE SICA MUBS SHIRT</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          The SICA MUBS Shirt is Always customised for the SICA Executives. This Uniquely Identifies the SICA Executives from other Members.
-                        </p>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-left">
-                        <img src="{% static 'assets/img/features/sicashirt.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-            
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4" style="text-align: right;"><strong>THE SICA MUBS T-SHIRT</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          The SICA MUBS T-Shirt is another SICA MUBS Feature that is Open Source to All SICA Members and the Public.
-                        </p>
-                        <a class="btn btn-feature" data-toggle="modal" data-target="#OrderFormModal"><strong>ORDER  SICAMUBS T-SHIRT</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-right">
-                        <img src="{% static 'assets/img/features/sicatshirt.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-            
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4"><strong>THE SICA MUBS ID</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          All fully registered SICA Members are given SICA ID's that come with Special Previlleges such free Visits in different SICA out Reaches Like Multi Choice, Abacom, Andela, Supercom Ltd among others for industry training, Pratice and Training in the business world.
-                        </p>
-                        <button class="btn btn-feature" data-toggle="modal" data-target="#OrderFormModal"><strong>ORDER SICAMUBS ID</strong></button>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-left">
-                        <img src="{% static 'assets/img/features/sicaid.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-            
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4" style="text-align: right;"><strong>SICA AWARDS & CERTIFICATION</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          SICA Awards & Certification are Bi-annually done always After the ICT week which also happens Bi-annually. All Active Participants During the week are Awarded Certificates of Attaining the Skills as a special recogonition that they are certified in a particular Skill.
-                        </p>
-                        <a class="btn btn-feature" href="/events/"><strong>PARTICIPATE IN EVENTS</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-right">
-                        <img src="{% static 'assets/img/features/sicaawards&certificates.jfif' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4"><strong>THE SICA MUBS ONLINE MAGAZINE</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          The SICA MUBS Online Magazine is made up of SICA Events, Programs, SICA MUBS Pictorial, SICA Carbinets, ICT related Informations, Students Innovations & Startups among Other. The Magazine is Open Source to the Public and Can be downloaded by anyone.
-                        </p>
-                        <a class="btn btn-feature" href="" ><strong>READ MAGAZINE</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-left">
-                        <img src="{% static 'assets/img/features/sicamagazine.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4" style="text-align: right;"><strong>SICA MUBS CONSTITUITION</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          SICA MUBS CONSTITUITION
-                        </p>
-                        <a class="btn btn-feature" href="" ><strong>DOWNLOAD CONSTITUITION</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-right">
-                        <img src="{% static 'assets/img/features/' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="row text-center">
-                        <h4>YOUR ORDERS</h4>
-                      </div>
-                      {% if error %}
-                        <div class="alert alert-danger text-center h4">
-                          <strong>Sorry!, {{error}}</strong>
-                        </div>
-                      {% else %} 
-                        <div class="row">
-                        <table class="table">
-                          <thead>
-                            <tr class="text-center">
-                              <th scope="col">ORDER ID</th>
-                              <th scope="col">EXECUTIVE SHIRT ORDERS</th>
-                              <th scope="col">SICAMUBS T-SHIRT ORDERS</th>
-                              <th scope="col">SICAMUBS ID</th>
-                              <th scope="col">ORDER STATUS</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {% for Your_Order in Your_Orders %}
-                              <tr class="text-center">
-                                <td>{{ Your_Order.id }}</td>
-                                <td>{{ Your_Order.order_exec_shirt }}</td>
-                                <td>{{ Your_Order.order_tshirt }}</td>
-                                <td>{{ Your_Order.order_sicaid }}</td>
-                                <td>{{ Your_Order.order_status }}</td>
-                              </tr>
-                            {% endfor %}
-                          </tbody>
-                        </table>
-                        </div>
-                      {% endif %}
-                    </div>
-                  </div>
-                </section>
-              </div>
-            </div>
-        </section>
-        <!-- End Feature Section -->
-
-        <!--================ Model Area =================-->    
-        <div class="modal fade" id="OrderFormModal" tabindex="-1" role="dialog" aria-labelledby="OrderFormModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close btn-danger" style="border-radius: 10rem;"data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-              <div class="modal-body">
-                <form action="/submitorder/" method="POST" class="home-form">
-                  {% csrf_token %}
-                    <div class="form-group">
-                      <div class="text-center">
-                        <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="text-center text-white">
-                        <h2>ORDER FORM</h2>
-                      </div>
-                    </div>
-                    <div class="form-group text-center">
-                      <div class="text-white"><label><strong>SICAMUBS Executive Shirt</strong></label></div>
-                      <input readonly type="text" class="form-control text-center" style="border-radius: 5rem;" id="order_exec_shirt" name="order_exec_shirt" value="NOT A SICA EXECUTIVE">
-                    </div>
-                    <div class="form-group text-center">
-                      <div class="text-white"><label><strong>SICAMUBS T-Shirt</strong></label></div>
-                      <input type="number" class="form-control text-center" style="border-radius: 5rem;" id="order_tshirt" name="order_tshirt" placeholder="number of tshirts">
-                    </div>
-                    <div class="form-group">
-                      <div class="text-center text-white">
-                        <input type="radio" id="i_dont_have_sicamubs_id" name="order_sicaid" value="MAKE MY SICAMUBS ID">
-                        <label for="i_dont_have_sicamubs_id"><strong>ORDER SICAMUBS ID</strong></label>
-                      </div>
-                      <div class="text-center text-white">
-                        <input type="radio" id="i_already_have_sicamubs_id" name="order_sicaid" value="ALREADY HAVE SICAMUBS ID">
-                        <label for="i_already_have_sicamubs_id"><strong>I ALREADY HAVE SICAMUBS ID</strong></label>
-                      </div>  
-                    </div>
-                    <div class="form-group">
-                      <div class="text-center">
-                        <button type="submit" class="btn home-btn"><strong>SUBMIT ORDER</strong></button>
-                      </div>
-                    </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {% include 'includes/profilemodal.html' %}
-
-        {% include 'passwordmgt/pw_change_form.html' %}
-        <!--================ End Modal Area =================-->
-
-        <!-- ======= Clients Section ======= -->
-        {% include 'includes/clients.html' %}
-        <!-- End Clients Section -->
-
-      </main>
-      <!-- End #main -->
-
-      <!-- === End After Login View, Normal Member === -->
-
-    {% else %}
-
-      <!-- === Before Login View === -->
-  
-      <!-- ======= Hero Section ======= -->
-      <section id="hero" class="d-flex justify-cntent-center align-items-center">
-
-        <div class="wave">
-
-            <svg width="1920px" height="215px" viewBox="0 0 1920 215" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
-                  <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,667 L1017.15166,667 L0,667 L0,439.134243 Z" id="Path"></path>
-                </g>
-              </g>
-            </svg>
-
-          </div>
-
-        <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
-          <div class="carousel-item active">
-            <div class="carousel-container">
-              <img src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 75px; border-radius: 2rem;" alt="">
-              <h2 class="animate__animated animate__fadeInDown">SICA FEATURES</h2>
-            </div>        
-          </div>
-        </div>
-      </section>
-      <!-- End Hero -->
-      
-      <!-- Main -->
-      <main id="main">
-          <!-- ======= Feature Section ======= -->
-          <section id="project" class="project section-bg">
-            <div class="container" data-aos="fade-up">
-              <div class="section-title"></div>
-              <div class="row">
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4"><strong>THE SICA MUBS SHIRT</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          The SICA MUBS Shirt is Always customised for the SICA Executives. This Uniquely Identifies the SICA Executives from other Members.
-                        </p>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-left">
-                        <img src="{% static 'assets/img/features/sicashirt.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-            
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4" style="text-align: right;"><strong>THE SICA MUBS T-SHIRT</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          The SICA MUBS T-Shirt is another SICA MUBS Feature that is Open Source to All SICA Members and the Public.
-                        </p>
-                        <a class="btn-feature" href="/"><strong>LOGIN TO ORDER</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-right">
-                        <img src="{% static 'assets/img/features/sicatshirt.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-            
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4"><strong>THE SICA MUBS ID</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          All fully registered SICA Members are given SICA ID's that come with Special Previlleges such free Visits in different SICA out Reaches Like Multi Choice, Abacom, Andela, Supercom Ltd among others for industry training, Pratice and Training in the business world.
-                        </p>
-                        <a class="btn-feature" href="/"><strong>LOGIN TO ORDER</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-left">
-                        <img src="{% static 'assets/img/features/sicaid.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-            
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4" style="text-align: right;"><strong>SICA AWARDS & CERTIFICATION</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          SICA Awards & Certification are Bi-annually done always After the ICT week which also happens Bi-annually. All Active Participants During the week are Awarded Certificates of Attaining the Skills as a special recogonition that they are certified in a particular Skill.
-                        </p>
-                        <a class="btn-feature" href="/"><strong>LOGIN TO PARTICIPATE</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-right">
-                        <img src="{% static 'assets/img/features/sicaawards&certificates.jfif' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4"><strong>THE SICA MUBS ONLINE MAGAZINE</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          The SICA MUBS Online Magazine is made up of SICA Events, Programs, SICA MUBS Pictorial, SICA Carbinets, ICT related Informations, Students Innovations & Startups among Other. The Magazine is Open Source to the Public and Can be downloaded by anyone.
-                        </p>
-                        <a class="btn-feature" href="/"><strong>LOGIN TO READ</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-left">
-                        <img src="{% static 'assets/img/features/sicamagazine.jpg' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                <section class="section">
-                  <div class="container">
-                    <div class="row align-items-center">
-                      <div class="col-md-4 ms-auto order-2">
-                        <h2 class="mb-4" style="text-align: right;"><strong>SICA MUBS CONSTITUITION</strong></h2>
-                        <p class="mb-4" style="text-align: justify;">
-                          SICA MUBS CONSTITUITION
-                        </p>
-                        <a class="btn-feature" href="/"><strong>LOGIN TO DOWNLOAD</strong></a>
-                      </div>
-                      <div class="col-md-6" data-aos="fade-right">
-                        <img src="{% static 'assets/img/features/' %}" style="border-radius: 25%;" alt="Image" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              </div>
-            </div>
-          </section>
-          <!-- End Feature Section -->
-
-        <!-- ======= Clients Section ======= -->
-        {% include 'includes/clients.html' %}
-        <!-- End Clients Section -->
-
-      </main>
-      <!-- End #main -->
-
-      <!-- === End Before Login View === -->
-
-    {% endif %}
 
     {% include 'includes/footer.html' %}
 
