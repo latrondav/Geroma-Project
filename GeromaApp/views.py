@@ -156,6 +156,9 @@ def alumnicarbinet(request):
 def carbinet(request):
     return render(request, 'carbinet.html')
 
+def blogdetail(request):
+    return render(request, 'blogdetail.html')
+
 def contact(request):
     if request.method == 'POST':
         contact_name = request.POST['contact_name']

@@ -1870,6 +1870,8 @@ section {
   padding: 30px;
   margin-bottom: 60px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 5rem;
+  background: rgba(5, 87, 158, 0.7);
 }
 
 .blog .entry .entry-img {
@@ -1886,7 +1888,7 @@ section {
 }
 
 .blog .entry .entry-title a {
-  color: #054a85;
+  color: #ffffff;
   transition: 0.3s;
 }
 
@@ -1896,7 +1898,7 @@ section {
 
 .blog .entry .entry-meta {
   margin-bottom: 15px;
-  color: #2b99f8;
+  color: #fff;
 }
 
 .blog .entry .entry-meta ul {
@@ -1919,7 +1921,7 @@ section {
 }
 
 .blog .entry .entry-meta a {
-  color: #777777;
+  color: #f6b024;
   font-size: 14px;
   display: inline-block;
   line-height: 1;
@@ -1941,7 +1943,7 @@ section {
   padding: 6px 20px;
   transition: 0.3s;
   font-size: 14px;
-  border-radius: 4px;
+  border-radius: 5rem;
 }
 
 .blog .entry .entry-content .read-more a:hover {
@@ -2198,10 +2200,12 @@ section {
 .blog .blog-pagination li {
   margin: 0 5px;
   transition: 0.3s;
+  border-radius: 5rem;
+  background: rgba(5, 87, 158, 0.7);
 }
 
 .blog .blog-pagination li a {
-  color: #0880e8;
+  color: #ffffff;
   padding: 7px 16px;
   display: flex;
   align-items: center;
@@ -2222,6 +2226,8 @@ section {
   padding: 30px;
   margin: 0 0 60px 20px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  background: rgba(5, 87, 158, 0.7);
+  border-radius: 5rem;
 }
 
 .blog .sidebar .sidebar-title {
@@ -2229,7 +2235,7 @@ section {
   font-weight: 700;
   padding: 0 0 0 0;
   margin: 0 0 15px 0;
-  color: #0665b7;
+  color: #ffffff;
   position: relative;
 }
 
@@ -2238,16 +2244,13 @@ section {
 }
 
 .blog .sidebar .search-form form {
-  background: #fff;
-  border: 1px solid #ddd;
-  padding: 3px 10px;
   position: relative;
 }
 
 .blog .sidebar .search-form form input[type=text] {
   border: 0;
   padding: 4px;
-  border-radius: 4px;
+  border-radius: 5rem 0 0 5rem;
   width: calc(100% - 40px);
 }
 
@@ -2264,7 +2267,7 @@ section {
   background: #f6b024;
   color: #fff;
   transition: 0.3s;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 5rem 5rem 0;
   line-height: 0;
 }
 
@@ -2286,7 +2289,7 @@ section {
 }
 
 .blog .sidebar .categories ul a {
-  color: #0665b7;
+  color: #ffffff;
   transition: 0.3s;
 }
 
@@ -2296,7 +2299,7 @@ section {
 
 .blog .sidebar .categories ul a span {
   padding-left: 5px;
-  color: #aaaaaa;
+  color: #f6b024;
   font-size: 14px;
 }
 
@@ -2316,7 +2319,7 @@ section {
 }
 
 .blog .sidebar .recent-posts h4 a {
-  color: #0665b7;
+  color: #ffffff;
   transition: 0.3s;
 }
 
@@ -2346,13 +2349,14 @@ section {
 }
 
 .blog .sidebar .tags ul a {
-  color: #0880e8;
+  color: #ffffff;
   font-size: 14px;
   padding: 6px 14px;
   margin: 0 6px 8px 0;
   border: 1px solid white;
   display: inline-block;
   transition: 0.3s;
+  border-radius: 5rem;
 }
 
 .blog .sidebar .tags ul a:hover {
