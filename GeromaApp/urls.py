@@ -24,6 +24,7 @@ urlpatterns = [
     path('history/', views.history),
     path('hscodesguide/', views.hscodesguide),
     path('requesttaxrate/', views.requesttaxrate),
+    path('calcggt/', views.calculategeneralgoodstaxes),
 
     #reset password path
     path('resetpasswordform/', auth_views.PasswordResetView.as_view(template_name="passwordmgt/pw_reset_form.html"), name= "password_reset_form"),

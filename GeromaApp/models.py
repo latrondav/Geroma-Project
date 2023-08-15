@@ -79,3 +79,24 @@ class Alumni_Carbinets(models.Model):
         return str(self.carbinet_name)
 
 
+from django.db import models
+
+class TaxCalculation(models.Model):
+    cif = models.DecimalField(max_digits=10, decimal_places=2)
+    currency = models.CharField(max_length=3)  # Assuming currency code like USD, EUR, UGX
+    exchange_rate = models.DecimalField(max_digits=10, decimal_places=4)  # Adjust digits as needed
+    hscode = models.CharField(max_length=10)
+    unit_of_measure = models.CharField(max_length=10)
+    measurement = models.DecimalField(max_digits=10, decimal_places=2)
+    goods_description = models.TextField()
+    converted_cif = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    import_duty = models.DecimalField(max_digits=10, decimal_places=2)
+    vat = models.DecimalField(max_digits=10, decimal_places=2)
+    withholding_tax = models.DecimalField(max_digits=10, decimal_places=2)
+    infrastructure_levy = models.DecimalField(max_digits=10, decimal_places=2)
+    total_tax = models.DecimalField(max_digits=10, decimal_places=2)
+    calculated_at = models.DateTimeField(auto_now_add=True)  # Timestamp field
+
+    def __str__(self):
+        return f"Tax Calculation for CIF: {self.cif} at {self.calculated_at}"
+

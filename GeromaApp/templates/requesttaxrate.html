@@ -47,42 +47,193 @@
   <div class="container" data-aos="fade-up">
 
     <div class="section-title">
-      <h2 class="text-white">Our Team</h2>
+      <h2 class="text-white">Request Tax Rate</h2>
     </div>
 
+    <ul class="nav nav-pills nav-justified mb-3" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link {% if tab == 'general_goods' %}active{% endif %} text-white" id="tab-general-goods" data-toggle="pill" href="#pills-general-goods" role="tab" aria-controls="pills-general-goods" aria-selected="true"> <strong>GENERAL GOODS</strong> </a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link {% if tab == 'motor_vehicle' %}active{% endif %} text-white" id="tab-motor-vehicle" data-toggle="pill" href="#pills-motor-vehicle" role="tab" aria-controls="pills-motor-vehicle" aria-selected="false"> <strong>MOTOR VEHICLE</strong> </a>
+      </li>
+    </ul>
+    
+    <div class="tab-content">
+      <div class="tab-pane fade {% if tab == 'general_goods' %}show active{% endif %}" id="pills-general-goods"
+        role="tabpanel" aria-labelledby="tab-general-goods">
+        <!-- General Goods Form -->
+          <!-- Tax Calculation Form -->
+          <div class="col-lg-12 mt-5 mt-lg-0 " data-aos="fade-left" data-aos-delay="100">
+            <form action="/calcggt/" method="POST" class="contact-form">
+              {% csrf_token %}
+              <div class="form-group">
+                <div class="text-center text-white">
+                  <h4><strong>Request Tax Rate For General Goods</strong></h4>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-4 form-group">
+                  <input type="number" name="cifvalue" class="form-control" id="cifvalue" placeholder="CIF Value" required>
+                </div>
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                  <select class="form-select" name="currency" id="currency" required>
+                    <option value="" selected disabled>Select Currency</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="UGX">UGX</option>
+                    <!-- Add more currency options as needed -->
+                  </select>
+                </div>
 
-    <!-- Tax Calculation Form -->
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card card-bg" data-aos="fade-up" style="border-radius: 15px;">
-          <div class="card-body">
-            <h4 class="card-title"><strong>Tax Calculation Form</strong></h4>
-            <form id="taxCalcForm">
-              <div class="form-group">
-                <label for="cargoValue">Cargo Value:</label>
-                <input type="number" class="form-control" id="cargoValue" required>
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                  <input type="text" class="form-control" name="exchangerate" id="exchangerate" placeholder="Exchange Rate" required>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="cargoType">Cargo Type:</label>
-                <select class="form-control" id="cargoType" required>
-                  <option value="normal">Normal</option>
-                  <option value="hazardous">Hazardous</option>
-                  <option value="fragile">Fragile</option>
-                </select>
+              <div class="row mt-3">
+                <div class="col-md-4 form-group">
+                  <input type="text" class="form-control" name="hscode" id="hscode" placeholder="HSCode" required>
+                </div>
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                  <select class="form-select" name="unitofmeasure" id="unitofmeasure" required>
+                    <option value="" disabled selected>Select Unit Of Measure</option>
+                    <option value="pieces">Pieces</option>
+                    <option value="kg">Kilograms</option>
+                    <option value="liters">Liters</option>
+                    <!-- Add more options as needed -->
+                  </select>
+                </div>
+
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                  <input type="text" class="form-control" name="measurement" id="measurement" placeholder="Measurement" required>
+                </div>
               </div>
-              <button type="submit" class="btn btn-primary">Calculate Taxes</button>
+              <!-- <div class="form-group mt-3">
+                <input type="text" class="form-control" name="hscode" id="hscode" placeholder="HSCode" required>
+              </div> -->
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="goodsdescription" id="goodsdescription" rows="5" placeholder="Description Of Goods" required></textarea>
+              </div>
+          
+              <div class="form-group">
+                <div class="text-center mt-3">
+                  <button class="btn btn-primary" type="submit">Calculate taxes</button>
+                </div>
+              </div>
             </form>
-            <div id="taxCalcResult" style="display: none;">
-              <h4><strong>Tax Calculation Result</strong></h4>
-              <p id="resultText"></p>
-            </div>
           </div>
-        </div>
+      </div>
+      <div class="tab-pane fade {% if tab == 'motor_vehicle' %}show active{% endif %}" id="pills-motor-vehicle"
+        role="tabpanel" aria-labelledby="tab-motor-vehicle">
+        <!-- Motor Vehicle Form -->
+        <!-- Modify and adapt your form inputs here for motor vehicles -->
+          <div class="col-lg-12 mt-5 mt-lg-0 " data-aos="fade-left" data-aos-delay="100">
+            <form action="/contact/" method="POST" class="contact-form">
+              {% csrf_token %}
+              <div class="form-group">
+                <div class="text-center text-white">
+                  <h4><strong>Request Tax Rate For Motor Vehicle</strong></h4>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-4 form-group">
+                  <input type="number" name="cifvalue" class="form-control" id="cifvalue" placeholder="CIF Value" required>
+                </div>
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                  <select class="form-select" name="currency" id="currency" required>
+                    <option value="" selected disabled>Select Currency</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="UGX">UGX</option>
+                    <!-- Add more currency options as needed -->
+                  </select>
+                </div>
+          
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                  <input type="text" class="form-control" name="exchangerate" id="exchangerate" placeholder="Exchange Rate"
+                    required>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-4 form-group">
+                  <input type="text" class="form-control" name="hscode" id="hscode" placeholder="HSCode" required>
+                </div>
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                  <select class="form-select" name="Vehicletype" id="vehicletype" required>
+                    <option value="" disabled selected>Select Vehicle Type</option>
+                    <option value="salon">Salon</option>
+                    <option value="hatchback">Hatchback</option>
+                    <option value="suv">SUV</option>
+                    <option value="sedan">Sedan</option>
+                    <option value="coupe">Coupe</option>
+                    <!-- Add more vehicle types as needed -->
+                  </select>
+                </div>
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                  <select class="form-select" name="yom" id="yom" required>
+                    <option value="" disabled selected>Select Year Of Manufacture</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <!-- Add more years as needed -->
+                  </select>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-4 form-group">
+                  <input type="text" class="form-control" name="seatingcapacity" id="seatingcapacity" placeholder="Seating Capacity" required>
+                </div>
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                  <input type="text" class="form-control" name="grossweight" id="grossweight" placeholder="Gross Weight" required>
+                </div>
+                <div class="col-md-4 form-group mt-3 mt-md-0">
+                  <input type="text" class="form-control" name="enginecapacity" id="enginecapacity" placeholder="Engine Capacity" required>
+                </div>
+              </div>
+              <!-- <div class="form-group mt-3">
+                          <input type="text" class="form-control" name="hscode" id="hscode" placeholder="HSCode" required>
+                        </div> -->
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="goodsdescription" id="goodsdescription" rows="5"
+                  placeholder="Description Of Vehicle" required></textarea>
+              </div>
+          
+              <div class="form-group">
+                <div class="text-center mt-3">
+                  <button class="btn btn-primary" type="submit">Calculate taxes</button>
+                </div>
+              </div>
+            </form>
+          </div>
       </div>
     </div>
+    
+    {% if success %}
+    <div class="card mt-4">
+      <div class="card-header">Tax Breakdown</div>
+      <div class="card-body">
+        <p>Import Duty: {{ tax_calculation.import_duty }}</p>
+        <p>VAT: {{ tax_calculation.vat }}</p>
+        <p>Withholding Tax: {{ tax_calculation.withholding_tax }}</p>
+        <p>Infrastructure Levy: {{ tax_calculation.infrastructure_levy }}</p>
+        <p>Total Tax: {{ tax_calculation.total_tax }}</p>
+      </div>
+    </div>
+    {% elif failed %}
+    <div class="card mt-4">
+      <div class="card-header">Tax Calculation Failed</div>
+      <div class="card-body">
+        <p>Message: {{ message }}</p>
+      </div>
+    </div>
+    {% endif %}
+
 
   </div>
 </section>
+
+
 
 <!-- Additional JavaScript to handle the tax calculation form -->
 <script>

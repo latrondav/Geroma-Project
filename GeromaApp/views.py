@@ -5,14 +5,14 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from GeromaApp.forms import ProfileForm
 from GeromaProject import settings
-from .models import Alumni_Carbinets, Contacts, Profile, Events, Orders
+from .models import *
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.utils.encoding import force_bytes, force_str
 from . token import generate_token
 from django.core.mail import EmailMessage, send_mail
-
+from decimal import Decimal
 
 # Create your views here.
 
@@ -241,4 +241,39 @@ def hscodesguide(request):
 
 def requesttaxrate(request):
     return render(request, 'requesttaxrate.html')
+
+def calculategeneralgoodstaxes(request):
+    if request.method == 'POST':
+        cif = Decimal(request.POST.get('cifvalue'))
+        currency = request.POST.get('currency')
+        exchange_rate = Decimal(request.POST.get('exchangerate'))
+
+        if currency != 'UGX':
+            converted_cif = cif * exchange_rate
+        else:
+            converted_cif = cif
+
+        import_duty = converted_cif * 0.25
+        vat = (converted_cif + import_duty) * 0.18
+        withholding_tax = converted_cif * 0.06
+        infrastructure_levy = converted_cif * 0.015
+
+        total_tax = import_duty + vat + withholding_tax + infrastructure_levy
+
+        # Save the tax breakdown to the database
+        tax_calculation = TaxCalculation.objects.create(
+            cif=cif,
+            converted_cif=converted_cif,
+            import_duty=import_duty,
+            vat=vat,
+            withholding_tax=withholding_tax,
+            infrastructure_levy=infrastructure_levy,
+            total_tax=total_tax
+        )
+
+        # Render the HTML template with the success flag
+        return render(request, 'requesttaxrate.html', {'success': True, 'tax_calculation': tax_calculation})
+    else:
+        return render(request, 'requesttaxrate.html', {'failed': True, 'message': 'Failed To Calculate Taxes, Contact Geroma Admin For Assistance.'})  # Render the HTML template for initial page load
+
 
