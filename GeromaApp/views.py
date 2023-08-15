@@ -153,8 +153,8 @@ def alumnicarbinet(request):
 
     return render(request, 'alumnicarbinet.html', context)
 
-def carbinet(request):
-    return render(request, 'carbinet.html')
+def blog(request):
+    return render(request, 'blog.html')
 
 def blogdetail(request):
     return render(request, 'blogdetail.html')
@@ -172,23 +172,23 @@ def contact(request):
 
     return render(request, 'contact.html')
 
-def events(request):
-    return render(request, 'events.html')
+def services(request):
+    return render(request, 'services.html')
 
-def features(request):
+def team(request):
     userId = request.user.id
     Your_Orders = Orders.objects.filter(user_id = userId)
     if Your_Orders:
         context={
             'Your_Orders':Your_Orders
         }
-        return render(request, 'features.html', context)
+        return render(request, 'team.html', context)
     else:
         context={
             'error':f'You have no orders yet, please browse through features and place an order, thank you.'
         }
 
-    return render(request, 'features.html', context)
+    return render(request, 'team.html', context)
 
 def submit_orders(request):
     if request.method == "POST":
@@ -236,9 +236,9 @@ def submit_orders_status(request):
 def history(request):
     return render(request, 'history.html')
 
-def projects(request):
-    return render(request, 'projects.html')
+def hscodesguide(request):
+    return render(request, 'hscodeguide.html')
 
-def softwarehub(request):
-    return render(request, 'softwarehub.html')
+def requesttaxrate(request):
+    return render(request, 'requesttaxrate.html')
 

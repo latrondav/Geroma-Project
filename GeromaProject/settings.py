@@ -13,26 +13,30 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 from decouple import config
+from django.core.management.utils import get_random_secret_key
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Email
+# MY EMAIL SETTING
+EMAIL_BACKEND = config('EMAIL_BACKEND')
 EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 EMAIL_PORT = config('EMAIL_PORT', cast=int)
-EMAIL_HOST_USER = config('EMAIL_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
+EMAIL_USER = config('EMAIL_USER')
+EMAIL_PASSWORD = config('EMAIL_PASSWORD')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY', get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
 
 
 # Application definition
@@ -87,22 +91,23 @@ DATABASES = {
         'NAME': BASE_DIR / 'GeromaDb.sqlite3',
 
         #'ENGINE': 'django.db.backends.mysql',
-        #'NAME': 'heroku_6feb0708244038d',
+        #'NAME': config('DB_NAME'),
         #'OPTIONS': {
             #'init_command': 'SET default_storage_engine=INNODB',
             #'init_command': "SET sql_mode = 'STRICT_ALL_TABLES';",
         #},
-        #'USER': 'b429d4067ced9f',
-        #'PASSWORD': '4dcc22ba',
-        #'HOST':'us-cdbr-east-06.cleardb.net',
-        #'PORT':'3306',
+        #'USER': config('DB_USER'),
+        #'PASSWORD': config('DB_PASSWORD'),
+        #'HOST': config('DB_HOST'),
+        #'PORT': config('DB_PORT'),
 
         # 'ENGINE': 'django.db.backends.postgresql',
         # 'NAME': config('DB_NAME'),
         # 'USER': config('DB_USER'),
         # 'PASSWORD': config('DB_PASSWORD'),
-        # 'HOST': 'localhost',
-        # 'PORT': '5432',
+        # 'HOST': config('DB_HOST'),
+        # 'PORT': config('DB_PORT'),
+        # 'OPTIONS': {'sslmode': 'require'},
     }
 }
 
