@@ -247,22 +247,32 @@ def calculategeneralgoodstaxes(request):
         cif = Decimal(request.POST.get('cifvalue'))
         currency = request.POST.get('currency')
         exchange_rate = Decimal(request.POST.get('exchangerate'))
+        hscode = request.POST.get('hscode')
+        unit_of_measure = request.POST.get('unitofmeasure')
+        measurement = Decimal(request.POST.get('measurement'))
+        goods_description = request.POST.get('goodsdescription')
 
         if currency != 'UGX':
             converted_cif = cif * exchange_rate
         else:
             converted_cif = cif
 
-        import_duty = converted_cif * 0.25
-        vat = (converted_cif + import_duty) * 0.18
-        withholding_tax = converted_cif * 0.06
-        infrastructure_levy = converted_cif * 0.015
+        import_duty = converted_cif * Decimal('0.25')
+        vat = (converted_cif + import_duty) * Decimal('0.18')
+        withholding_tax = converted_cif * Decimal('0.06')
+        infrastructure_levy = converted_cif * Decimal('0.015')
 
         total_tax = import_duty + vat + withholding_tax + infrastructure_levy
 
         # Save the tax breakdown to the database
         tax_calculation = TaxCalculation.objects.create(
             cif=cif,
+            currency=currency,
+            exchange_rate=exchange_rate,
+            hscode=hscode,
+            unit_of_measure=unit_of_measure,
+            measurement=measurement,
+            goods_description=goods_description,
             converted_cif=converted_cif,
             import_duty=import_duty,
             vat=vat,

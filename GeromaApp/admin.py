@@ -1,5 +1,5 @@
 from django.contrib import admin
-from GeromaApp.models import Contacts, Profile, Events, Orders, Alumni_Carbinets
+from GeromaApp.models import *
 
 # Register your models here.
 #admin.site.register(Contacts)
@@ -7,6 +7,7 @@ admin.site.register(Profile)
 admin.site.register(Events)
 #admin.site.register(Orders)
 admin.site.register(Alumni_Carbinets)
+admin.site.register(TaxCalculation)
 
 @admin.register(Contacts)
 class ContactsAdmin(admin.ModelAdmin):
