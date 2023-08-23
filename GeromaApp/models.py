@@ -84,17 +84,27 @@ from django.db import models
 class TaxCalculation(models.Model):
     cif = models.DecimalField(max_digits=10, decimal_places=2)
     currency = models.CharField(max_length=3)  # Assuming currency code like USD, EUR, UGX
-    exchange_rate = models.DecimalField(max_digits=10, decimal_places=4)  # Adjust digits as needed
+    exchange_rate = models.DecimalField(max_digits=10, decimal_places=2)  # Adjust digits as needed
     hscode = models.CharField(max_length=10)
-    unit_of_measure = models.CharField(max_length=10)
-    measurement = models.DecimalField(max_digits=10, decimal_places=2)
+    unit_of_measure = models.CharField(max_length=10, blank=True, null=True)
+    measurement = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    vehicle_type = models.CharField(max_length=20, blank=True, null=True)
+    year_of_manufacture = models.CharField(max_length=20, blank=True, null=True)
+    seating_capacity = models.CharField(max_length=20, blank=True, null=True)
+    gross_weight = models.CharField(max_length=20, blank=True, null=True)
+    engine_capacity = models.CharField(max_length=20, blank=True, null=True)
     goods_description = models.TextField()
     converted_cif = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     import_duty = models.DecimalField(max_digits=10, decimal_places=2)
     vat = models.DecimalField(max_digits=10, decimal_places=2)
     withholding_tax = models.DecimalField(max_digits=10, decimal_places=2)
-    infrastructure_levy = models.DecimalField(max_digits=10, decimal_places=2)
+    infrastructure_levy = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    environmental_levy = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    registration_fees = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    stamp_duty = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    form_fees = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     total_tax = models.DecimalField(max_digits=10, decimal_places=2)
+    category = models.CharField(max_length=10)
     calculated_at = models.DateTimeField(auto_now_add=True)  # Timestamp field
 
     def __str__(self):

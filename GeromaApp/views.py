@@ -13,6 +13,7 @@ from django.utils.encoding import force_bytes, force_str
 from . token import generate_token
 from django.core.mail import EmailMessage, send_mail
 from decimal import Decimal
+from datetime import datetime
 
 # Create your views here.
 
@@ -264,6 +265,8 @@ def calculategeneralgoodstaxes(request):
 
         total_tax = import_duty + vat + withholding_tax + infrastructure_levy
 
+        Category = 'General Goods'
+
         # Save the tax breakdown to the database
         tax_calculation = TaxCalculation.objects.create(
             cif=cif,
@@ -278,12 +281,78 @@ def calculategeneralgoodstaxes(request):
             vat=vat,
             withholding_tax=withholding_tax,
             infrastructure_levy=infrastructure_levy,
-            total_tax=total_tax
+            total_tax=total_tax,
+            category=Category
         )
 
         # Render the HTML template with the success flag
         return render(request, 'requesttaxrate.html', {'success': True, 'tax_calculation': tax_calculation})
     else:
         return render(request, 'requesttaxrate.html', {'failed': True, 'message': 'Failed To Calculate Taxes, Contact Geroma Admin For Assistance.'})  # Render the HTML template for initial page load
+
+def calculatemotorvehicletaxes(request):
+    if request.method == 'POST':
+        cif = Decimal(request.POST.get('cifvalue'))
+        currency = request.POST.get('currency')
+        exchange_rate = Decimal(request.POST.get('exchangerate'))
+        hscode = request.POST.get('hscode')
+        vehicle_type = request.POST.get('vehicletype')
+        year_of_manufacture = request.POST.get('yom')
+        seating_capacity = request.POST.get('seatingcapacity')
+        gross_weight = Decimal(request.POST.get('grossweight'))
+        engine_capacity = request.POST.get('enginecapacity')
+        goods_description = request.POST.get('goodsdescription')
+
+        if currency != 'UGX':
+            converted_cif = cif * exchange_rate
+        else:
+            converted_cif = cif
+
+        import_duty = converted_cif * Decimal('0.25')
+        vat = (converted_cif + import_duty) * Decimal('0.18')
+        withholding_tax = converted_cif * Decimal('0.06')
+
+        year_today = datetime.now().year
+        if year_of_manufacture and (year_today - int(year_of_manufacture)) > 8:
+            environmental_levy = converted_cif * Decimal('0.5')
+        else:
+            environmental_levy = converted_cif * Decimal('0')
+
+        registration_fees = Decimal('1500000')
+        stamp_duty = Decimal('15000')
+        form_fees = Decimal('35000')
+
+        total_tax = import_duty + vat + withholding_tax + environmental_levy + registration_fees + stamp_duty + form_fees
+
+        Category = 'Motor Vehicle'
+
+        # Save the tax breakdown to the database
+        tax_calculation = TaxCalculation.objects.create(
+            cif=cif,
+            currency=currency,
+            exchange_rate=exchange_rate,
+            converted_cif=converted_cif,
+            hscode=hscode,
+            vehicle_type=vehicle_type,
+            year_of_manufacture=year_of_manufacture,
+            seating_capacity=seating_capacity,
+            gross_weight=gross_weight,
+            engine_capacity=engine_capacity,
+            goods_description=goods_description,
+            import_duty=import_duty,
+            vat=vat,
+            withholding_tax=withholding_tax,
+            total_tax=total_tax,
+            environmental_levy=environmental_levy,
+            registration_fees=registration_fees,
+            stamp_duty=stamp_duty,
+            form_fees=form_fees,
+            category=Category
+        )
+
+        # Render the HTML template with the success flag
+        return render(request, 'requesttaxrate.html', {'success': True, 'tax_calculation': tax_calculation})
+    else:
+        return render(request, 'requesttaxrate.html', {'failed': True, 'message': 'Failed To Calculate Taxes, Contact Geroma Admin For Assistance.'})
 
 
