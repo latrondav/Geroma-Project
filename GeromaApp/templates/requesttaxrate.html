@@ -37,6 +37,56 @@
           color: #fff;
           margin-right: 10px;
         }
+
+        /* Style the custom dropdown container */
+        .custom-dropdown {
+          position: relative;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+
+        /* Style the search input */
+        .search-input {
+          width: 100%;
+          padding: 10px;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+        }
+
+        /* Style the dropdown options */
+        .dropdown-options {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          z-index: 1;
+          color: black;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          max-height: 150px;
+          overflow-y: auto;
+        }
+
+        /* Style the selected option */
+        .selected-option {
+          background-color: #007bff;
+          color: #fff;
+        }
+
+        /* Style the individual option */
+        .dropdown-option {
+          padding: 10px;
+          cursor: pointer;
+        }
+
+        /* Style the options on hover */
+        .dropdown-option:hover {
+          background-color: #007bff;
+          color: #fff;
+        }
       </style>
   
   <body>
@@ -224,11 +274,67 @@
                             <h4><strong>Request Tax Rate For Motor Vehicle</strong></h4>
                           </div>
                         </div>
+
+                        <div class="form-group mt-3">
+                          <div class="custom-dropdown form-group mt-3">
+                            <input type="text" class="search-input" placeholder="Vehicle Description...">
+                            <div class="dropdown-options">
+                              <option value="" selected disabled>Select Description</option>
+                              <option value="Mercedes">MERCEDES</option>
+                              <option value="BMW">BMW</option>
+                              <option value="AUDI">AUDI</option>
+                              <option value="Toyota">Toyota</option>
+                              <option value="Chevy">Chevy</option>
+                              <!-- Add more currency options as needed -->
+                            </div>
+                          </div>
+                        </div>
+
+                        <script>
+                          // JavaScript to handle the search functionality
+                          const searchInput = document.querySelector('.search-input');
+                          const dropdownOptions = document.querySelector('.dropdown-options');
+                          const options = dropdownOptions.querySelectorAll('option');
+
+                          searchInput.addEventListener('input', function () {
+                            const searchTerm = searchInput.value.toLowerCase();
+
+                            options.forEach(option => {
+                              if (option.textContent.toLowerCase().includes(searchTerm)) {
+                                option.style.display = 'block';
+                              } else {
+                                option.style.display = 'none';
+                              }
+                            });
+
+                            // Show/hide the dropdown container based on search results
+                            const visibleOptions = [...options].filter(option => option.style.display === 'block');
+                            if (visibleOptions.length > 0) {
+                              dropdownOptions.style.display = 'block';
+                            } else {
+                              dropdownOptions.style.display = 'none';
+                            }
+                          });
+
+                          // Handle option selection
+                          options.forEach(option => {
+                            option.addEventListener('click', function () {
+                              searchInput.value = option.textContent;
+                              options.forEach(o => o.classList.remove('selected-option'));
+                              option.classList.add('selected-option');
+                              dropdownOptions.style.display = 'none';
+                            });
+                          });
+                        </script>
+
                         <div class="row mt-3">
-                          <div class="col-md-4 form-group">
+                          <div class="col-md-3 form-group">
+                            <input type="text" class="form-control" name="hscode" id="hscode" placeholder="HSCode" required>
+                          </div>
+                          <div class="col-md-3 form-group mt-3">
                             <input type="number" name="cifvalue" class="form-control" id="cifvalue" placeholder="CIF Value" required>
                           </div>
-                          <div class="col-md-4 form-group mt-3 mt-md-0">
+                          <div class="col-md-3 form-group mt-3 mt-md-0">
                             <select class="form-select" name="currency" id="currency" title="currency" required>
                               <option value="" selected disabled>Select Currency</option>
                               <option value="USD">USD</option>
@@ -237,27 +343,12 @@
                               <!-- Add more currency options as needed -->
                             </select>
                           </div>
-                
-                          <div class="col-md-4 form-group mt-3 mt-md-0">
-                            <input type="text" class="form-control" name="exchangerate" id="exchangerate" placeholder="Exchange Rate"
-                              required>
+                          <div class="col-md-3 form-group mt-3 mt-md-0">
+                            <input type="text" class="form-control" name="enginecapacity" id="enginecapacity" placeholder="Engine Capacity" required>
                           </div>
                         </div>
+
                         <div class="row mt-3">
-                          <div class="col-md-4 form-group">
-                            <input type="text" class="form-control" name="hscode" id="hscode" placeholder="HSCode" required>
-                          </div>
-                          <div class="col-md-4 form-group mt-3 mt-md-0">
-                            <select class="form-select" name="Vehicletype" id="vehicletype" title="vehicletype" required>
-                              <option value="" disabled selected>Select Vehicle Type</option>
-                              <option value="salon">Salon</option>
-                              <option value="hatchback">Hatchback</option>
-                              <option value="suv">SUV</option>
-                              <option value="sedan">Sedan</option>
-                              <option value="coupe">Coupe</option>
-                              <!-- Add more vehicle types as needed -->
-                            </select>
-                          </div>
                           <div class="col-md-4 form-group mt-3 mt-md-0">
                             <select class="form-select" name="yom" id="yom" title="yom" required>
                               <option value="" disabled selected>Select Year Of Manufacture</option>
@@ -288,28 +379,34 @@
                               <!-- Add more years as needed -->
                             </select>
                           </div>
-                        </div>
-                
-                        <div class="row mt-3">
-                          <div class="col-md-4 form-group">
-                            <input type="text" class="form-control" name="seatingcapacity" id="seatingcapacity"
-                              placeholder="Seating Capacity" required>
-                          </div>
                           <div class="col-md-4 form-group mt-3 mt-md-0">
-                            <input type="text" class="form-control" name="grossweight" id="grossweight" placeholder="Gross Weight"
+                            <input type="text" class="form-control" name="exchangerate" id="exchangerate" placeholder="Country Of Origin"
                               required>
                           </div>
                           <div class="col-md-4 form-group mt-3 mt-md-0">
-                            <input type="text" class="form-control" name="enginecapacity" id="enginecapacity"
-                              placeholder="Engine Capacity" required>
+                            <input type="text" class="form-control" name="exchangerate" id="exchangerate" placeholder="Exchange Rate" required>
                           </div>
                         </div>
-                        <!-- <div class="form-group mt-3">
-                                          <input type="text" class="form-control" name="hscode" id="hscode" placeholder="HSCode" required>
-                                        </div> -->
-                        <div class="form-group mt-3">
-                          <textarea class="form-control" name="goodsdescription" id="goodsdescription" rows="5"
-                            placeholder="Description Of Vehicle" required></textarea>
+                        
+                        <div class="row mt-3">
+                          <div class="col-md-4 form-group mt-3 mt-md-0">
+                            <select class="form-select" name="Vehicletype" id="vehicletype" title="vehicletype" required>
+                              <option value="" disabled selected>Select Vehicle Type</option>
+                              <option value="salon">Salon</option>
+                              <option value="hatchback">Hatchback</option>
+                              <option value="suv">SUV</option>
+                              <option value="sedan">Sedan</option>
+                              <option value="coupe">Coupe</option>
+                              <!-- Add more vehicle types as needed -->
+                            </select>
+                          </div>
+                          <div class="col-md-4 form-group mt-3">
+                            <input type="text" class="form-control" name="seatingcapacity" id="seatingcapacity" placeholder="Seating Capacity" required>
+                          </div>
+                          <div class="col-md-4 form-group mt-3 mt-md-0">
+                            <input type="text" class="form-control" name="grossweight" id="grossweight" placeholder="Gross Weight" required>
+                          </div>
+                          
                         </div>
                 
                         <div class="form-group">

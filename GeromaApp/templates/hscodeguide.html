@@ -3,8 +3,6 @@
 
   {% load static %}
 
-  {% load custom_filters %}
-
   <title>GEROMA - HS CODES</title>
 
   {% include 'includes/head.html'%}
@@ -94,7 +92,6 @@
     }
   </style>
   
-
 <body>
   {% include 'includes/header.html' %}
 
@@ -111,7 +108,7 @@
           </g>
         </svg>
 
-      </div>
+    </div>
 
     <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
       <div class="carousel-item active">
@@ -148,154 +145,80 @@
             <div class="col-md-2"></div>
           </div>
 
-          <!-- Data Table with Pagination -->
-          <!-- <div class="row">
-            <div class="col-md-12">
-              <nav aria-label="Page navigation">
-                <ul class="pagination pagination-sm justify-content-center"> <!-- Center the pagination -->
-                  <!-- Previous Page Link -->
-                  <!-- {% if hscodes.has_previous %}
-                  <li class="page-item">
-                    <a class="page-link" href="?page={{ hscodes.previous_page_number }}">
-                      <strong>« Previous</strong>
-                    </a>
-                  </li>
-                  {% endif %} -->
-              
-                  <!-- Page Numbers -->
-                  <!-- {% for num in hscodes.paginator.page_range %}
-                  <li class="page-item {% if num == hscodes.number %}active{% endif %}">
-                    <a class="page-link" href="?page={{ num }}">
-                      <strong>{{ num }}</strong>
-                    </a>
-                  </li>
-                  {% endfor %} -->
-              
-                  <!-- Next Page Link -->
-                  <!-- {% if hscodes.has_next %}
-                  <li class="page-item">
-                    <a class="page-link" href="?page={{ hscodes.next_page_number }}">
-                      <strong>Next »</strong>
-                    </a>
-                  </li>
-                  {% endif %}
-                </ul>
-              </nav> -->
+          <nav aria-label="Page navigation">
+            <ul class="pagination">
+              <!-- <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li> -->
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item"><a class="page-link" href="#">6</a></li>
+              <li class="page-item"><a class="page-link" href="#">7</a></li>
+              <li class="page-item"><a class="page-link" href="#">8</a></li>
+              <li class="page-item"><a class="page-link" href="#">9</a></li>
+              <!-- <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li> -->
+            </ul>
+          </nav>
 
-              <nav aria-label="Page navigation">
-                <ul class="pagination">
-                  <!-- <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li> -->
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">4</a></li>
-                  <li class="page-item"><a class="page-link" href="#">5</a></li>
-                  <li class="page-item"><a class="page-link" href="#">6</a></li>
-                  <li class="page-item"><a class="page-link" href="#">7</a></li>
-                  <li class="page-item"><a class="page-link" href="#">8</a></li>
-                  <li class="page-item"><a class="page-link" href="#">9</a></li>
-                  <!-- <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li> -->
-                </ul>
-              </nav>
-
-
-              <div class="table-responsive">
-                <table class="table table-bordered table-white-text" id="dataTable">
-                  <thead>
-                    <tr>
-                      <th class="header-large-font">Heading</th>
-                      <th class="header-large-font">HSCode</th>
-                      <th class="header-large-font">Description</th>
-                      <th class="header-large-font">Unit Of Quantity</th>
-                      <th class="header-large-font">Rate</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- Data rows will be dynamically added here -->
-                    {% for hscode in hscodes %}
-                    <tr>
-                      <td>{{ hscode.heading }}</td>
-                      <td>{{ hscode.hs_code }}</td>
-                      <td>{{ hscode.description }}</td>
-                      <td>{{ hscode.unit_of_quantity }}</td>
-                      <td>{{ hscode.rate }}</td>
-                      <!-- <td>{{ hscode.rate|replace_nan }}</td> -->
-                    </tr>
-                    {% endfor %}
-                    <!-- Add more rows as needed -->
-                  </tbody>
-                </table>
-              </div>
-
-              <nav aria-label="Page navigation">
-                <ul class="pagination">
-                  <!-- <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li> -->
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">4</a></li>
-                  <li class="page-item"><a class="page-link" href="#">5</a></li>
-                  <li class="page-item"><a class="page-link" href="#">6</a></li>
-                  <li class="page-item"><a class="page-link" href="#">7</a></li>
-                  <li class="page-item"><a class="page-link" href="#">8</a></li>
-                  <li class="page-item"><a class="page-link" href="#">9</a></li>
-                  <!-- <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li> -->
-                </ul>
-              </nav>
-
-
-              <!-- Data Table with Pagination -->
-              <!-- <div class="row">
-                          <div class="col-md-12">
-                            <nav aria-label="Page navigation">
-                              <ul class="pagination pagination-sm justify-content-center"> <!-- Center the pagination -->
-              <!-- Previous Page Link -->
-              <!-- {% if hscodes.has_previous %}
-                                <li class="page-item">
-                                  <a class="page-link" href="?page={{ hscodes.previous_page_number }}">
-                                    <strong>« Previous</strong>
-                                  </a>
-                                </li>
-                                {% endif %} -->
-              
-              <!-- Page Numbers -->
-              <!-- {% for num in hscodes.paginator.page_range %}
-                                <li class="page-item {% if num == hscodes.number %}active{% endif %}">
-                                  <a class="page-link" href="?page={{ num }}">
-                                    <strong>{{ num }}</strong>
-                                  </a>
-                                </li>
-                                {% endfor %} -->
-              
-              <!-- Next Page Link -->
-              <!-- {% if hscodes.has_next %}
-                                <li class="page-item">
-                                  <a class="page-link" href="?page={{ hscodes.next_page_number }}">
-                                    <strong>Next »</strong>
-                                  </a>
-                                </li>
-                                {% endif %}
-                              </ul>
-                            </nav> -->
-
-            </div>
+          <div class="table-responsive">
+            <table class="table table-bordered table-white-text" id="dataTable">
+              <thead>
+                <tr>
+                  <th class="header-large-font">Heading</th>
+                  <th class="header-large-font">HSCode</th>
+                  <th class="header-large-font">Description</th>
+                  <th class="header-large-font">Unit Of Quantity</th>
+                  <th class="header-large-font">Rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Data rows will be dynamically added here -->
+                {% for hscode in hscodes %}
+                <tr>
+                  <td>{{ hscode.heading }}</td>
+                  <td>{{ hscode.hs_code }}</td>
+                  <td>{{ hscode.description }}</td>
+                  <td>{{ hscode.unit_of_quantity }}</td>
+                  <td>{{ hscode.rate }}</td>
+                </tr>
+                {% endfor %}
+                <!-- Add more rows as needed -->
+              </tbody>
+            </table>
           </div>
+
+          <nav aria-label="Page navigation">
+            <ul class="pagination">
+              <!-- <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li> -->
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item"><a class="page-link" href="#">6</a></li>
+              <li class="page-item"><a class="page-link" href="#">7</a></li>
+              <li class="page-item"><a class="page-link" href="#">8</a></li>
+              <li class="page-item"><a class="page-link" href="#">9</a></li>
+              <!-- <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li> -->
+            </ul>
+          </nav>
 
         </div>
       </section>
