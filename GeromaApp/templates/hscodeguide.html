@@ -222,11 +222,12 @@
                     <!-- Data rows will be dynamically added here -->
                     {% for hscode in hscodes %}
                     <tr>
-                      <td>{{ hscode.heading|replace_nan }}</td>
-                      <td>{{ hscode.hs_code|replace_nan }}</td>
-                      <td>{{ hscode.description|replace_nan }}</td>
-                      <td>{{ hscode.unit_of_quantity|replace_nan }}</td>
-                      <td>{{ hscode.rate|replace_nan }}</td>
+                      <td>{{ hscode.heading }}</td>
+                      <td>{{ hscode.hs_code }}</td>
+                      <td>{{ hscode.description }}</td>
+                      <td>{{ hscode.unit_of_quantity }}</td>
+                      <td>{{ hscode.rate }}</td>
+                      <!-- <td>{{ hscode.rate|replace_nan }}</td> -->
                     </tr>
                     {% endfor %}
                     <!-- Add more rows as needed -->
@@ -309,34 +310,46 @@
   {% include 'includes/footer.html' %}
 
   <script>
-    // Function to perform the search operation
-    function searchTable() {
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      const table = document.getElementById('dataTable');
-      const rows = table.getElementsByTagName('tr');
+    // Create a function to build a search index from the table data
+      function buildSearchIndex() {
+        const table = document.getElementById('dataTable');
+        const rows = table.getElementsByTagName('tr');
+        const index = [];
 
-      for (let i = 1; i < rows.length; i++) {
-        const rowData = rows[i].getElementsByTagName('td');
-        let found = false;
+        for (let i = 1; i < rows.length; i++) {
+          const rowData = rows[i].getElementsByTagName('td');
+          const searchableContent = [];
 
-        for (let j = 0; j < rowData.length; j++) {
-          const cellData = rowData[j];
-          if (cellData) {
-            const textValue = cellData.textContent || cellData.innerText;
-            if (textValue.toLowerCase().indexOf(input) > -1) {
-              found = true;
-              break;
+          for (let j = 0; j < rowData.length; j++) {
+            const cellData = rowData[j];
+            if (cellData) {
+              const textValue = cellData.textContent || cellData.innerText;
+              searchableContent.push(textValue.toLowerCase());
             }
           }
+
+          index.push(searchableContent.join(' '));
         }
 
-        rows[i].style.display = found ? '' : 'none';
+        return index;
       }
-    }
 
+      // Function to perform the search operation
+      function searchTable() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const index = buildSearchIndex();
+        const table = document.getElementById('dataTable');
+        const rows = table.getElementsByTagName('tr');
 
-    // Add event listener to the search input to trigger searchTable on "input"
-    document.getElementById('searchInput').addEventListener('input', searchTable);
+        for (let i = 1; i < rows.length; i++) {
+          const found = index[i - 1].indexOf(input) > -1;
+          rows[i].style.display = found ? '' : 'none';
+        }
+      }
+
+      // Add event listener to the search input to trigger searchTable on "input"
+      document.getElementById('searchInput').addEventListener('input', searchTable);
+
   </script>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
