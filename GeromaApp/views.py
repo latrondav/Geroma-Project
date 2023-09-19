@@ -14,6 +14,7 @@ from . token import generate_token
 from django.core.mail import EmailMessage, send_mail
 from decimal import Decimal
 from datetime import datetime
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -238,7 +239,59 @@ def history(request):
     return render(request, 'history.html')
 
 def hscodesguide(request):
-    return render(request, 'hscodeguide.html')
+    # Get all HSCodes objects
+    hscodes = HSCodes.objects.all()
+
+    # # Configure the number of items per page
+    # items_per_page = 1000
+
+    # # Initialize the Paginator with the HSCodes queryset and items per page
+    # paginator = Paginator(hscodes, items_per_page)
+
+    # # Get the current page number from the request's GET parameters
+    # page_number = request.GET.get('page')
+
+    # # Get the Page object for the current page number
+    # hscodes_page = paginator.get_page(page_number)
+
+    context = {
+        'hscodes': hscodes  # Pass the paginated HSCodes Page object to the template
+    }
+
+    return render(request, 'hscodeguide.html', context)
+
+import math
+
+def hscodesguide(request):
+    # Get all HSCodes objects
+    hscodes = HSCodes.objects.all()
+
+    # # Iterate through the queryset and replace NaN values with "blank"
+    # for hscode in hscodes:
+    #     for field in hscode._meta.fields:  # Iterate through all fields in the model
+    #         if isinstance(field, models.FloatField):
+    #             field_value = getattr(hscode, field.name)
+    #             if math.isnan(field_value):
+    #                 setattr(hscode, field.name, "")
+    
+    # # Configure the number of items per page
+    # items_per_page = 1000
+
+    # # Initialize the Paginator with the HSCodes queryset and items per page
+    # paginator = Paginator(hscodes, items_per_page)
+
+    # # Get the current page number from the request's GET parameters
+    # page_number = request.GET.get('page')
+
+    # # Get the Page object for the current page number
+    # hscodes_page = paginator.get_page(page_number)
+
+    context = {
+        'hscodes': hscodes  # Pass the modified queryset to the template
+    }
+
+    return render(request, 'hscodeguide.html', context)
+
 
 def requesttaxrate(request):
     return render(request, 'requesttaxrate.html')

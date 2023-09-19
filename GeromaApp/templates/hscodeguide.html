@@ -3,6 +3,8 @@
 
   {% load static %}
 
+  {% load custom_filters %}
+
   <title>GEROMA - HS CODES</title>
 
   {% include 'includes/head.html'%}
@@ -147,39 +149,86 @@
           </div>
 
           <!-- Data Table with Pagination -->
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-md-12">
+              <nav aria-label="Page navigation">
+                <ul class="pagination pagination-sm justify-content-center"> <!-- Center the pagination -->
+                  <!-- Previous Page Link -->
+                  <!-- {% if hscodes.has_previous %}
+                  <li class="page-item">
+                    <a class="page-link" href="?page={{ hscodes.previous_page_number }}">
+                      <strong>« Previous</strong>
+                    </a>
+                  </li>
+                  {% endif %} -->
+              
+                  <!-- Page Numbers -->
+                  <!-- {% for num in hscodes.paginator.page_range %}
+                  <li class="page-item {% if num == hscodes.number %}active{% endif %}">
+                    <a class="page-link" href="?page={{ num }}">
+                      <strong>{{ num }}</strong>
+                    </a>
+                  </li>
+                  {% endfor %} -->
+              
+                  <!-- Next Page Link -->
+                  <!-- {% if hscodes.has_next %}
+                  <li class="page-item">
+                    <a class="page-link" href="?page={{ hscodes.next_page_number }}">
+                      <strong>Next »</strong>
+                    </a>
+                  </li>
+                  {% endif %}
+                </ul>
+              </nav> -->
+
+              <nav aria-label="Page navigation">
+                <ul class="pagination">
+                  <!-- <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li> -->
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">4</a></li>
+                  <li class="page-item"><a class="page-link" href="#">5</a></li>
+                  <li class="page-item"><a class="page-link" href="#">6</a></li>
+                  <li class="page-item"><a class="page-link" href="#">7</a></li>
+                  <li class="page-item"><a class="page-link" href="#">8</a></li>
+                  <li class="page-item"><a class="page-link" href="#">9</a></li>
+                  <!-- <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li> -->
+                </ul>
+              </nav>
+
+
               <div class="table-responsive">
                 <table class="table table-bordered table-white-text" id="dataTable">
                   <thead>
                     <tr>
-                      <th class="header-large-font">HS Code No.</th>
+                      <th class="header-large-font">Heading</th>
+                      <th class="header-large-font">HSCode</th>
                       <th class="header-large-font">Description</th>
+                      <th class="header-large-font">Unit Of Quantity</th>
                       <th class="header-large-font">Rate</th>
                     </tr>
                   </thead>
                   <tbody>
                     <!-- Data rows will be dynamically added here -->
+                    {% for hscode in hscodes %}
                     <tr>
-                      <td>123456</td>
-                      <td>Customs Clearance Service</td>
-                      <td>$50</td>
+                      <td>{{ hscode.heading|replace_nan }}</td>
+                      <td>{{ hscode.hs_code|replace_nan }}</td>
+                      <td>{{ hscode.description|replace_nan }}</td>
+                      <td>{{ hscode.unit_of_quantity|replace_nan }}</td>
+                      <td>{{ hscode.rate|replace_nan }}</td>
                     </tr>
-                    <tr>
-                      <td>789012</td>
-                      <td>Tax Consultancy Service</td>
-                      <td>$100</td>
-                    </tr>
-                    <tr>
-                      <td>123456</td>
-                      <td>Customs Clearance Service</td>
-                      <td>$50</td>
-                    </tr>
-                    <tr>
-                      <td>789012</td>
-                      <td>Tax Consultancy Service</td>
-                      <td>$100</td>
-                    </tr>
+                    {% endfor %}
                     <!-- Add more rows as needed -->
                   </tbody>
                 </table>
@@ -187,22 +236,63 @@
 
               <nav aria-label="Page navigation">
                 <ul class="pagination">
-                  <!-- Pagination will be dynamically updated here -->
-                  <ul class="pagination">
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item active" aria-current="page">
-                      <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">Next</a>
-                    </li>
-                  </ul>
+                  <!-- <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li> -->
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">4</a></li>
+                  <li class="page-item"><a class="page-link" href="#">5</a></li>
+                  <li class="page-item"><a class="page-link" href="#">6</a></li>
+                  <li class="page-item"><a class="page-link" href="#">7</a></li>
+                  <li class="page-item"><a class="page-link" href="#">8</a></li>
+                  <li class="page-item"><a class="page-link" href="#">9</a></li>
+                  <!-- <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li> -->
                 </ul>
               </nav>
+
+
+              <!-- Data Table with Pagination -->
+              <!-- <div class="row">
+                          <div class="col-md-12">
+                            <nav aria-label="Page navigation">
+                              <ul class="pagination pagination-sm justify-content-center"> <!-- Center the pagination -->
+              <!-- Previous Page Link -->
+              <!-- {% if hscodes.has_previous %}
+                                <li class="page-item">
+                                  <a class="page-link" href="?page={{ hscodes.previous_page_number }}">
+                                    <strong>« Previous</strong>
+                                  </a>
+                                </li>
+                                {% endif %} -->
+              
+              <!-- Page Numbers -->
+              <!-- {% for num in hscodes.paginator.page_range %}
+                                <li class="page-item {% if num == hscodes.number %}active{% endif %}">
+                                  <a class="page-link" href="?page={{ num }}">
+                                    <strong>{{ num }}</strong>
+                                  </a>
+                                </li>
+                                {% endfor %} -->
+              
+              <!-- Next Page Link -->
+              <!-- {% if hscodes.has_next %}
+                                <li class="page-item">
+                                  <a class="page-link" href="?page={{ hscodes.next_page_number }}">
+                                    <strong>Next »</strong>
+                                  </a>
+                                </li>
+                                {% endif %}
+                              </ul>
+                            </nav> -->
+
             </div>
           </div>
 
@@ -244,8 +334,43 @@
       }
     }
 
+
     // Add event listener to the search input to trigger searchTable on "input"
     document.getElementById('searchInput').addEventListener('input', searchTable);
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Initially, show the first page of the table and mark it as active
+      showPage(1);
+      markPageActive(1);
+
+      // Event listener for pagination clicks
+      $('.page-link').click(function (event) {
+        event.preventDefault();
+        const page = $(this).text();
+        showPage(page);
+        markPageActive(page);
+      });
+
+      // Function to show the selected page of the table
+      function showPage(page) {
+        // Hide all table rows
+        $('tbody tr').hide();
+
+        // Show the rows for the selected page
+        const startIndex = (page - 1) * 1000; // Assuming 1000 rows per page
+        const endIndex = startIndex + 1000;
+        $('tbody tr').slice(startIndex, endIndex).show();
+      }
+
+      // Function to mark the selected page as active
+      function markPageActive(page) {
+        $('.page-link').removeClass('active'); // Remove active class from all links
+        $(`.page-link:contains('${page}')`).addClass('active'); // Add active class to the clicked link
+      }
+    });
   </script>
 
 </body>

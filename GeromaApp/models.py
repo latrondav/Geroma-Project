@@ -24,7 +24,6 @@ class Profile(models.Model):
     def __str__(self):
         return str(self.user)
     
-
 class Events(models.Model):
     event_name = models.CharField(max_length=100, null=False, blank=False)
     event_image = models.ImageField(upload_to="events_images", null=False, blank=False)
@@ -78,9 +77,6 @@ class Alumni_Carbinets(models.Model):
     def __str__(self):
         return str(self.carbinet_name)
 
-
-from django.db import models
-
 class TaxCalculation(models.Model):
     cif = models.DecimalField(max_digits=10, decimal_places=2)
     currency = models.CharField(max_length=3)  # Assuming currency code like USD, EUR, UGX
@@ -109,4 +105,11 @@ class TaxCalculation(models.Model):
 
     def __str__(self):
         return f"Tax Calculation for CIF: {self.cif} at {self.calculated_at}"
+
+class HSCodes(models.Model):
+    heading = models.CharField(max_length=10, blank=True, null=True)
+    hs_code = models.CharField(max_length=20, blank=True, null=True)
+    description = models.TextField()
+    unit_of_quantity = models.CharField(max_length=10, blank=True, null=True)
+    rate = models.CharField(max_length=10, blank=True, null=True)
 
