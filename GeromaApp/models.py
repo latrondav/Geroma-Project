@@ -113,3 +113,13 @@ class HSCodes(models.Model):
     unit_of_quantity = models.CharField(max_length=10, blank=True, null=True)
     rate = models.CharField(max_length=10, blank=True, null=True)
 
+    def HSCodeRate(self):
+        try:
+            rate_as_float = float(self.rate)
+            return f'{int(rate_as_float * 100)}%'
+        except (ValueError, TypeError):
+            return '' 
+    
+    def __str__(self):
+        return str(self.description)
+
