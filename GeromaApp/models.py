@@ -123,3 +123,14 @@ class HSCodes(models.Model):
     def __str__(self):
         return str(self.description)
 
+class MotorVehicleValueGuide(models.Model):
+    HSCode = models.CharField(max_length=255)
+    CountryOfOrigin = models.CharField(max_length=255)
+    Description = models.TextField()
+    YearOfManufacture = models.CharField(max_length=10, blank=True, null=True)
+    Engine = models.CharField(max_length=10, blank=True, null=True)
+    CIF = models.CharField(max_length=10, blank=True, null=True)
+
+    def __str__(self):
+        return self.Description
+
