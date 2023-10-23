@@ -90,6 +90,7 @@ class TaxCalculation(models.Model):
     gross_weight = models.CharField(max_length=20, blank=True, null=True)
     engine_capacity = models.CharField(max_length=20, blank=True, null=True)
     goods_description = models.TextField()
+    country_of_origin= models.CharField(max_length=10, blank=True, null=True)
     converted_cif = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     import_duty = models.DecimalField(max_digits=10, decimal_places=2)
     vat = models.DecimalField(max_digits=10, decimal_places=2)

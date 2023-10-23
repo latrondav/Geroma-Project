@@ -15,6 +15,8 @@ from django.core.mail import EmailMessage, send_mail
 from decimal import Decimal
 from datetime import datetime
 from django.core.paginator import Paginator
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -260,41 +262,12 @@ def hscodesguide(request):
 
     return render(request, 'hscodeguide.html', context)
 
-import math
-
-def hscodesguide(request):
-    # Get all HSCodes objects
-    hscodes = HSCodes.objects.all()
-
-    # # Iterate through the queryset and replace NaN values with "blank"
-    # for hscode in hscodes:
-    #     for field in hscode._meta.fields:  # Iterate through all fields in the model
-    #         if isinstance(field, models.FloatField):
-    #             field_value = getattr(hscode, field.name)
-    #             if math.isnan(field_value):
-    #                 setattr(hscode, field.name, "")
-    
-    # # Configure the number of items per page
-    # items_per_page = 1000
-
-    # # Initialize the Paginator with the HSCodes queryset and items per page
-    # paginator = Paginator(hscodes, items_per_page)
-
-    # # Get the current page number from the request's GET parameters
-    # page_number = request.GET.get('page')
-
-    # # Get the Page object for the current page number
-    # hscodes_page = paginator.get_page(page_number)
-
-    context = {
-        'hscodes': hscodes  # Pass the modified queryset to the template
-    }
-
-    return render(request, 'hscodeguide.html', context)
-
-
 def requesttaxrate(request):
-    return render(request, 'requesttaxrate.html')
+    MVVGuideDetails = MotorVehicleValueGuide.objects.all()
+    context = {
+        'MVVGuideDetails': MVVGuideDetails
+    }
+    return render(request, 'requesttaxrate.html', context)
 
 def calculategeneralgoodstaxes(request):
     if request.method == 'POST':
@@ -345,37 +318,39 @@ def calculategeneralgoodstaxes(request):
 
 def calculatemotorvehicletaxes(request):
     if request.method == 'POST':
-        cif = Decimal(request.POST.get('cifvalue'))
-        currency = request.POST.get('currency')
-        exchange_rate = Decimal(request.POST.get('exchangerate'))
-        hscode = request.POST.get('hscode')
-        vehicle_type = request.POST.get('vehicletype')
+        mv_description = request.POST.get('MVDescriptions')
+        hscode = request.POST.get('mvhscode')
+        cif = Decimal(request.POST.get('mvcifvalue'))
+        currency = request.POST.get('mvcurrency')
+        engine_capacity = request.POST.get('enginecapacity')
         year_of_manufacture = request.POST.get('yom')
+        country_of_origin = request.POST.get('mvcoc')
+        vehicle_type = request.POST.get('vehicletype')
         seating_capacity = request.POST.get('seatingcapacity')
         gross_weight = Decimal(request.POST.get('grossweight'))
-        engine_capacity = request.POST.get('enginecapacity')
-        goods_description = request.POST.get('goodsdescription')
+
+        exchange_rate = (Decimal(3754.27)).quantize(Decimal('0.00'))
 
         if currency != 'UGX':
-            converted_cif = cif * exchange_rate
+            converted_cif = (cif * exchange_rate).quantize(Decimal('0.00'))
         else:
-            converted_cif = cif
+            converted_cif = (cif).quantize(Decimal('0.00'))
 
-        import_duty = converted_cif * Decimal('0.25')
-        vat = (converted_cif + import_duty) * Decimal('0.18')
-        withholding_tax = converted_cif * Decimal('0.06')
+        import_duty = (converted_cif * Decimal('0.25')).quantize(Decimal('0.00'))
+        vat = ((converted_cif + import_duty) * Decimal('0.18')).quantize(Decimal('0.00'))
+        withholding_tax = (converted_cif * Decimal('0.06')).quantize(Decimal('0.00'))
 
         year_today = datetime.now().year
         if year_of_manufacture and (year_today - int(year_of_manufacture)) > 8:
-            environmental_levy = converted_cif * Decimal('0.5')
+            environmental_levy = (converted_cif * Decimal('0.5')).quantize(Decimal('0.00'))
         else:
-            environmental_levy = converted_cif * Decimal('0')
+            environmental_levy = (converted_cif * Decimal('0')).quantize(Decimal('0.00'))
 
-        registration_fees = Decimal('1500000')
-        stamp_duty = Decimal('15000')
-        form_fees = Decimal('35000')
+        registration_fees = (Decimal('1500000')).quantize(Decimal('0.00'))
+        stamp_duty = (Decimal('15000')).quantize(Decimal('0.00'))
+        form_fees = (Decimal('35000')).quantize(Decimal('0.00'))
 
-        total_tax = import_duty + vat + withholding_tax + environmental_levy + registration_fees + stamp_duty + form_fees
+        total_tax = (import_duty + vat + withholding_tax + environmental_levy + registration_fees + stamp_duty + form_fees).quantize(Decimal('0.00'))
 
         Category = 'Motor Vehicle'
 
@@ -391,7 +366,8 @@ def calculatemotorvehicletaxes(request):
             seating_capacity=seating_capacity,
             gross_weight=gross_weight,
             engine_capacity=engine_capacity,
-            goods_description=goods_description,
+            goods_description=mv_description,
+            country_of_origin=country_of_origin,
             import_duty=import_duty,
             vat=vat,
             withholding_tax=withholding_tax,
@@ -408,4 +384,25 @@ def calculatemotorvehicletaxes(request):
     else:
         return render(request, 'requesttaxrate.html', {'failed': True, 'message': 'Failed To Calculate Taxes, Contact Geroma Admin For Assistance.'})
 
+  # Add this decorator for CSRF protection
 
+def get_selected_vehicle_details(request, selecteddescription):
+    if request.method == 'GET':
+        if selecteddescription:
+            try:
+                # Retrieve the vehicle details based on the selected description
+                vehicle = MotorVehicleValueGuide.objects.get(Description=selecteddescription)
+                vehicle_details = {
+                    'hscode': vehicle.HSCode,
+                    'CountryOfOrigin': vehicle.CountryOfOrigin,
+                    'yom': vehicle.YearOfManufacture,
+                    'enginecapacity': vehicle.Engine,
+                    'cifvalue': vehicle.CIF,
+                }
+                return JsonResponse(vehicle_details)
+            except MotorVehicleValueGuide.DoesNotExist:
+                return JsonResponse({'error': 'Vehicle not found'}, status=404)
+        else:
+            return JsonResponse({'error': 'Invalid request'}, status=400)
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=405)

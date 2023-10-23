@@ -150,16 +150,39 @@
                 <div class="card card-bg mt-4">
                   <h3 class="card-title">Motor Vehicle Tax Calculation Breakdown</h3>
                   <div class="card-body">
-                    <div class="card-text">
-                      <p>Import Duty: UGX {{ tax_calculation.import_duty }}</p>
-                      <p>VAT: UGX {{ tax_calculation.vat }}</p>
-                      <p>Withholding Tax: UGX {{ tax_calculation.withholding_tax }}</p>
-                      <p>Environmental Levy: UGX {{ tax_calculation.environmental_levy }}</p>
-                      <p>Registration Fees: UGX {{ tax_calculation.registration_fees }}</p>
-                      <p>Stamp Duty: UGX {{ tax_calculation.stamp_duty }}</p>
-                      <p>Form Fees: UGX {{ tax_calculation.form_fees }}</p>
-                      <p> <strong> Total Tax: UGX {{ tax_calculation.total_tax }} </strong> </p>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="card-text">
+                          <h4>Tax Calculation Requirements Submitted</h4>
+                          <p> <strong>Motor Vehicle Description:</strong> {{ tax_calculation.goods_description }}</p>
+                          <p> <strong>HSCode:</strong> {{ tax_calculation.hscode }}</p>
+                          <p> <strong>CIF Value(USD):</strong> USD {{ tax_calculation.cif }}</p>
+                          <p> <strong>Exchange Rate:</strong> UGX {{ tax_calculation.exchange_rate }}</p>
+                          <p> <strong>CIF Value(UGX):</strong> UGX {{ tax_calculation.converted_cif }}</p>
+                          <p> <strong>Engine Capacity:</strong> {{ tax_calculation.engine_capacity }}</p>
+                          <p> <strong>Year Of Manufacture:</strong> {{ tax_calculation.year_of_manufacture }}</p>
+                          <p> <strong>Country Of Origin:</strong> {{ tax_calculation.country_of_origin }}</p>
+                          <p> <strong>Vehicle Type:</strong> {{ tax_calculation.vehicle_type }}</p>
+                          <p> <strong>Seating Capacity:</strong> {{ tax_calculation.seating_capacity }}</p>
+                          <p> <strong>Gross Weight:</strong> {{ tax_calculation.gross_weight }} KGS</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="card-text">
+                          <h4>Tax Calculation Results</h4>
+                          <p> <strong>Import Duty:</strong>  UGX {{ tax_calculation.import_duty }}</p>
+                          <p> <strong>VAT:</strong>  UGX {{ tax_calculation.vat }}</p>
+                          <p> <strong>Withholding Tax:</strong> UGX {{ tax_calculation.withholding_tax }}</p>
+                          <p> <strong>Environmental Levy:</strong>  UGX {{ tax_calculation.environmental_levy }}</p>
+                          <p> <strong>Registration Fees:</strong>  UGX {{ tax_calculation.registration_fees }}</p>
+                          <p> <strong>Stamp Duty:</strong> UGX {{ tax_calculation.stamp_duty }}</p>
+                          <p> <strong>Form Fees:</strong>  UGX {{ tax_calculation.form_fees }}</p>
+                          <p> <strong> Total Tax: UGX {{ tax_calculation.total_tax }} </strong> </p>
+                        </div>
+                      </div>
                     </div>
+                    
+                    
                   </div>
                 </div>
               {% else %}
@@ -277,68 +300,27 @@
 
                         <div class="form-group mt-3">
                           <div class="custom-dropdown form-group mt-3">
-                            <input type="text" class="search-input" placeholder="Vehicle Description...">
+                            <input type="text" class="search-input" placeholder="Vehicle Description..." id="MVDescriptions" name="MVDescriptions">
                             <div class="dropdown-options">
                               <option value="" selected disabled>Select Description</option>
-                              <option value="Mercedes">MERCEDES</option>
-                              <option value="BMW">BMW</option>
-                              <option value="AUDI">AUDI</option>
-                              <option value="Toyota">Toyota</option>
-                              <option value="Chevy">Chevy</option>
-                              <!-- Add more currency options as needed -->
+                              {% for MVVGD in MVVGuideDetails %}
+                                <option value="{{ MVVGD.Description }}">{{ MVVGD.Description }}</option>
+                              {% endfor %}
                             </div>
                           </div>
                         </div>
-
-                        <script>
-                          // JavaScript to handle the search functionality
-                          const searchInput = document.querySelector('.search-input');
-                          const dropdownOptions = document.querySelector('.dropdown-options');
-                          const options = dropdownOptions.querySelectorAll('option');
-
-                          searchInput.addEventListener('input', function () {
-                            const searchTerm = searchInput.value.toLowerCase();
-
-                            options.forEach(option => {
-                              if (option.textContent.toLowerCase().includes(searchTerm)) {
-                                option.style.display = 'block';
-                              } else {
-                                option.style.display = 'none';
-                              }
-                            });
-
-                            // Show/hide the dropdown container based on search results
-                            const visibleOptions = [...options].filter(option => option.style.display === 'block');
-                            if (visibleOptions.length > 0) {
-                              dropdownOptions.style.display = 'block';
-                            } else {
-                              dropdownOptions.style.display = 'none';
-                            }
-                          });
-
-                          // Handle option selection
-                          options.forEach(option => {
-                            option.addEventListener('click', function () {
-                              searchInput.value = option.textContent;
-                              options.forEach(o => o.classList.remove('selected-option'));
-                              option.classList.add('selected-option');
-                              dropdownOptions.style.display = 'none';
-                            });
-                          });
-                        </script>
-
+                        
                         <div class="row mt-3">
                           <div class="col-md-4 form-group mt-3 mt-md-0">
-                            <input type="text" class="form-control" name="hscode" id="hscode" placeholder="HSCode" required>
+                            <input type="text" class="form-control" name="mvhscode" id="mvhscode" placeholder="HSCode" required>
                           </div>
                           <div class="col-md-4 form-group mt-3 mt-md-0">
-                            <input type="number" name="cifvalue" class="form-control" id="cifvalue" placeholder="CIF Value" required>
+                            <input type="text" name="mvcifvalue" class="form-control" id="mvcifvalue" placeholder="CIF Value" required>
                           </div>
                           <div class="col-md-4 form-group mt-3 mt-md-0">
-                            <select class="form-select" name="currency" id="currency" title="currency" required>
+                            <select class="form-select" name="mvcurrency" id="mvcurrency" title="currency" required>
                               <option value="" selected disabled>Select Currency</option>
                               <option value="USD">USD</option>
-                              <option value="EUR">EUR</option>
                               <option value="UGX">UGX</option>
                               <!-- Add more currency options as needed -->
                             </select>
@@ -348,8 +330,7 @@
 
                         <div class="row mt-3">
                           <div class="col-md-4 form-group mt-3 mt-md-0">
-                            <input type="text" class="form-control" name="enginecapacity" id="enginecapacity" placeholder="Engine Capacity"
-                              required>
+                            <input type="text" class="form-control" name="enginecapacity" id="enginecapacity" placeholder="Engine Capacity" required>
                           </div>
                           <div class="col-md-4 form-group mt-3 mt-md-0">
                             <select class="form-select" name="yom" id="yom" title="yom" required>
@@ -382,21 +363,24 @@
                             </select>
                           </div>
                           <div class="col-md-4 form-group mt-3 mt-md-0">
-                            <input type="text" class="form-control" name="exchangerate" id="exchangerate" placeholder="Country Of Origin"
-                              required>
+                            <input type="text" class="form-control" name="mvcoc" id="mvcoc" placeholder="Country Of Origin" required>
                           </div>
                           
                         </div>
                         
                         <div class="row mt-3">
                           <div class="col-md-4 form-group mt-3 mt-md-0">
-                            <select class="form-select" name="Vehicletype" id="vehicletype" title="vehicletype" required>
+                            <select class="form-select" name="vehicletype" id="vehicletype" title="vehicletype" required>
                               <option value="" disabled selected>Select Vehicle Type</option>
-                              <option value="salon">Salon</option>
-                              <option value="hatchback">Hatchback</option>
-                              <option value="suv">SUV</option>
-                              <option value="sedan">Sedan</option>
-                              <option value="coupe">Coupe</option>
+                              <option value="Salon">Salon</option>
+                              <option value="Hatchback">Hatchback</option>
+                              <option value="SUV">SUV</option>
+                              <option value="Sedan">Sedan</option>
+                              <option value="Coupe">Coupe</option>
+                              <option value="Pickup">Pickup Truck</option>
+                              <option value="Convertible">Convertible</option>
+                              <option value="Van">Van</option>
+                              <option value="Truck">Truck</option>
                               <!-- Add more vehicle types as needed -->
                             </select>
                           </div>
@@ -411,7 +395,7 @@
                 
                         <div class="form-group">
                           <div class="text-center mt-3">
-                            <button class="btn btn-primary" type="submit">Calculate taxes</button>
+                            <button class="btn btn-primary" type="submit">Calculate Taxes</button>
                           </div>
                         </div>
                       </form>
@@ -424,34 +408,74 @@
           </div>
         </section>
       
-        <!-- Additional JavaScript to handle the tax calculation form -->
         <script>
-          // Function to handle the form submission and calculate taxes
-          function calculateTaxes(event) {
-            event.preventDefault();
+          // Section 1: Variable Declarations
+          const searchInput = document.querySelector('.search-input');
+          const options = document.querySelectorAll('.dropdown-options option');
+          const dropdown = document.querySelector('.dropdown-options');
+          let selectedOption = null;
 
-            const cargoValue = parseFloat(document.getElementById('cargoValue').value);
-            const cargoType = document.getElementById('cargoType').value;
+          // Section 2: Event Listener for Input Changes
+          searchInput.addEventListener('input', function () {
+            const searchTerm = searchInput.value.toLowerCase();
 
-            // Perform the tax calculation based on the provided data
-            // For example, you can use simple calculations or more complex logic here
-            // For demonstration purposes, let's assume a basic tax calculation formula:
-            let taxAmount;
-            if (cargoType === 'normal') {
-              taxAmount = cargoValue * 0.1; // 10% tax for normal cargo
-            } else if (cargoType === 'hazardous') {
-              taxAmount = cargoValue * 0.15; // 15% tax for hazardous cargo
-            } else if (cargoType === 'fragile') {
-              taxAmount = cargoValue * 0.05; // 5% tax for fragile cargo
+            // Filter and display options based on the search term
+            options.forEach(option => {
+              if (option.textContent.toLowerCase().includes(searchTerm)) {
+                option.style.display = 'block';
+              } else {
+                option.style.display = 'none';
+              }
+            });
+
+            // Show or hide the dropdown based on filtered options
+            const visibleOptions = [...options].filter(option => option.style.display === 'block');
+            dropdown.style.display = visibleOptions.length > 0 ? 'block' : 'none';
+          });
+
+          // Section 3: Event Listeners for Option Selection
+          options.forEach(option => {
+            option.addEventListener('click', function () {
+              selectedOption = option;
+              searchInput.value = selectedOption.value; // Update the input with the selected option's value
+              dropdown.style.display = 'none';
+
+              // Additional form field population based on the selected option
+              const otherFormFields = {
+                mvhscode: document.getElementById("mvhscode"),
+                mvcifvalue: document.getElementById("mvcifvalue"),
+                enginecapacity: document.getElementById("enginecapacity"),
+                yom: document.getElementById("yom"),
+                mvcoc: document.getElementById("mvcoc"),
+                mvcurrency: document.getElementById("mvcurrency"),
+              };
+
+              selectedDescription = selectedOption.value;
+
+              if (selectedDescription) {
+                // Make an AJAX request to retrieve vehicle details
+                fetch(`/getselectedvehicledetails/${selectedDescription}/`)
+                  .then((response) => response.json())
+                  .then((data) => {
+                    // Populate form fields with the received data
+                    otherFormFields.mvhscode.value = data.hscode;
+                    otherFormFields.mvcifvalue.value = data.cifvalue;
+                    otherFormFields.enginecapacity.value = data.enginecapacity;
+                    otherFormFields.yom.value = data.yom;
+                    otherFormFields.mvcoc.value = data.CountryOfOrigin;
+                    otherFormFields.mvcurrency.value = 'USD';
+                  })
+                  .catch((error) => console.error(error));
+              }
+            });
+          });
+
+          // Section 4: Additional Code to Prevent Default Form Submission
+          searchInput.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter' && selectedOption) {
+              event.preventDefault();
             }
-
-            // Display the tax calculation result
-            document.getElementById('resultText').innerText = `The calculated tax amount is $${taxAmount.toFixed(2)}.`;
-            document.getElementById('taxCalcResult').style.display = 'block';
-          }
-
-          // Add event listener to the form for form submission
-          document.getElementById('taxCalcForm').addEventListener('submit', calculateTaxes);
+          });
         </script>
 
         <!-- ======= Clients Section ======= -->
