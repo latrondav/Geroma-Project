@@ -137,13 +137,26 @@
                 <div class="card card-bg mt-4">
                   <h3 class="card-title">General Goods Tax Calculation Breakdown</h3>
                   <div class="card-body">
-                    <div class="card-text">
-                      <p>Import Duty: UGX {{ tax_calculation.import_duty }}</p>
-                      <p>VAT: UGX {{ tax_calculation.vat }}</p>
-                      <p>Withholding Tax: UGX {{ tax_calculation.withholding_tax }}</p>
-                      <p>Infrastructure Levy: UGX {{ tax_calculation.infrastructure_levy }}</p>
-                      <p> <strong> Total Tax: UGX {{ tax_calculation.total_tax }} </strong> </p>
-                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <h4>Tax Calculation Requirements Submitted</h4>
+                        <p> <strong>Goods Description:</strong> {{ tax_calculation.goods_description }}</p>
+                        <p> <strong>HSCode:</strong> {{ tax_calculation.hscode }}</p>
+                        <p> <strong>CIF Value:</strong> {% if tax_calculation.currency == 'USD' %} USD {{ tax_calculation.cif }} {% else %} UGX {{ tax_calculation.cif }} {% endif %}</p>
+                        <p> <strong>Exchange Rate:</strong> UGX {{ tax_calculation.exchange_rate }}</p>
+                        <p> <strong>Converted CIF Value:</strong> UGX {{ tax_calculation.converted_cif }}</p>
+                        <p> <strong>Gross Unit:</strong> {{ tax_calculation.measurement }} {{ tax_calculation.unit_of_measure }}</p>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="card-text">
+                          <h4>Tax Calculation Results</h4>
+                          <p> <strong>Import Duty:</strong> UGX {{ tax_calculation.import_duty }}</p>
+                          <p> <strong>VAT:</strong>  UGX {{ tax_calculation.vat }}</p>
+                          <p> <strong>Withholding Tax:</strong>  UGX {{ tax_calculation.withholding_tax }}</p>
+                          <p> <strong>Infrastructure Levy:</strong> UGX {{ tax_calculation.infrastructure_levy }}</p>
+                          <p> <strong> Total Tax: UGX {{ tax_calculation.total_tax }} </strong> </p>
+                        </div>
+                      </div>
                   </div>
                 </div>
               {% elif tax_calculation.category == 'Motor Vehicle' %}
@@ -156,15 +169,15 @@
                           <h4>Tax Calculation Requirements Submitted</h4>
                           <p> <strong>Motor Vehicle Description:</strong> {{ tax_calculation.goods_description }}</p>
                           <p> <strong>HSCode:</strong> {{ tax_calculation.hscode }}</p>
-                          <p> <strong>CIF Value(USD):</strong> USD {{ tax_calculation.cif }}</p>
+                          <p> <strong>CIF Value:</strong> {% if tax_calculation.currency == 'USD' %} {{ tax_calculation.currency }} {{ tax_calculation.cif }} {% else %} {{ tax_calculation.currency }} {{ tax_calculation.cif }} {% endif %}</p>
                           <p> <strong>Exchange Rate:</strong> UGX {{ tax_calculation.exchange_rate }}</p>
-                          <p> <strong>CIF Value(UGX):</strong> UGX {{ tax_calculation.converted_cif }}</p>
+                          <p> <strong>Converted CIF Value:</strong> UGX {{ tax_calculation.converted_cif }}</p>
                           <p> <strong>Engine Capacity:</strong> {{ tax_calculation.engine_capacity }}</p>
                           <p> <strong>Year Of Manufacture:</strong> {{ tax_calculation.year_of_manufacture }}</p>
                           <p> <strong>Country Of Origin:</strong> {{ tax_calculation.country_of_origin }}</p>
                           <p> <strong>Vehicle Type:</strong> {{ tax_calculation.vehicle_type }}</p>
                           <p> <strong>Seating Capacity:</strong> {{ tax_calculation.seating_capacity }}</p>
-                          <p> <strong>Gross Weight:</strong> {{ tax_calculation.gross_weight }} KGS</p>
+                          <p> <strong>Gross Weight:</strong> {{ tax_calculation.measurement }} {{ tax_calculation.unit_of_measure }}</p>
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -233,48 +246,44 @@
                         </div>
                         <div class="row mt-3">
                           <div class="col-md-4 form-group">
-                            <input type="number" name="cifvalue" class="form-control" id="cifvalue" placeholder="CIF Value" required>
+                            <input type="text" class="form-control" name="hscode" id="hscode" placeholder="HSCode eg 8120.12.20" required>
+                          </div>
+                          <div class="col-md-4 form-group">
+                            <input type="text" name="cifvalue" class="form-control" id="cifvalue" placeholder="CIF Value" required>
                           </div>
                           <div class="col-md-4 form-group mt-3 mt-md-0">
                             <select class="form-select" name="currency" id="currency" required>
                               <option value="" selected disabled>Select Currency</option>
                               <option value="USD">USD</option>
-                              <option value="EUR">EUR</option>
                               <option value="UGX">UGX</option>
                               <!-- Add more currency options as needed -->
                             </select>
                           </div>
-                
-                          <div class="col-md-4 form-group mt-3 mt-md-0">
-                            <input type="text" class="form-control" name="exchangerate" id="exchangerate" placeholder="Exchange Rate"
-                              required>
-                          </div>
                         </div>
                         <div class="row mt-3">
-                          <div class="col-md-4 form-group">
-                            <input type="text" class="form-control" name="hscode" id="hscode" placeholder="HSCode" required>
-                          </div>
-                          <div class="col-md-4 form-group mt-3 mt-md-0">
+                          <div class="col-md-6 form-group mt-3 mt-md-0">
                             <select class="form-select" name="unitofmeasure" id="unitofmeasure" title="unitofmeasure" required>
                               <option value="" disabled selected>Select Unit Of Measure</option>
-                              <option value="pieces">Pieces</option>
-                              <option value="kg">Kilograms</option>
-                              <option value="liters">Liters</option>
-                              <!-- Add more options as needed -->
+                              <option value="Pieces">Pieces</option>
+                              <option value="Kgs">Kilograms</option>
+                              <option value="Liters">Liters</option>
+                              <option value="Grams">Grams</option>
+                              <option value="Meters">Meters</option>
+                              <option value="Cubic_meters">Cubic Meters</option>
+                              <option value="Milliliters">Milliliters</option>
+                              <!-- Add more units of measure as needed -->
                             </select>
                           </div>
                 
-                          <div class="col-md-4 form-group mt-3 mt-md-0">
-                            <input type="text" class="form-control" name="measurement" id="measurement" placeholder="Measurement"
-                              required>
+                          <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <input type="text" class="form-control" name="grossunit" id="grossunit" placeholder="Gross Unit" required>
                           </div>
                         </div>
                         <!-- <div class="form-group mt-3">
                                 <input type="text" class="form-control" name="hscode" id="hscode" placeholder="HSCode" required>
                               </div> -->
                         <div class="form-group mt-3">
-                          <textarea class="form-control" name="goodsdescription" id="goodsdescription" rows="5"
-                            placeholder="Description Of Goods" required></textarea>
+                          <textarea class="form-control" name="goodsdescription" id="goodsdescription" rows="5" placeholder="Description Of Goods" required></textarea>
                         </div>
                 
                         <div class="form-group">
@@ -304,7 +313,7 @@
                             <div class="dropdown-options">
                               <option value="" selected disabled>Select Description</option>
                               {% for MVVGD in MVVGuideDetails %}
-                                <option value="{{ MVVGD.Description }}">{{ MVVGD.Description }}</option>
+                                <option value="{{ MVVGD.id }}">{{ MVVGD.Description }}</option>
                               {% endfor %}
                             </div>
                           </div>
@@ -372,13 +381,13 @@
                           <div class="col-md-4 form-group mt-3 mt-md-0">
                             <select class="form-select" name="vehicletype" id="vehicletype" title="vehicletype" required>
                               <option value="" disabled selected>Select Vehicle Type</option>
-                              <option value="Salon">Salon</option>
-                              <option value="Hatchback">Hatchback</option>
+                              <option value="Car">Car</option>
+                              <!-- <option value="Hatchback">Hatchback</option>
                               <option value="SUV">SUV</option>
                               <option value="Sedan">Sedan</option>
                               <option value="Coupe">Coupe</option>
                               <option value="Pickup">Pickup Truck</option>
-                              <option value="Convertible">Convertible</option>
+                              <option value="Convertible">Convertible</option> -->
                               <option value="Van">Van</option>
                               <option value="Truck">Truck</option>
                               <!-- Add more vehicle types as needed -->
@@ -437,7 +446,7 @@
           options.forEach(option => {
             option.addEventListener('click', function () {
               selectedOption = option;
-              searchInput.value = selectedOption.value; // Update the input with the selected option's value
+              searchInput.value = selectedOption.textContent; // Update the input with the selected option's value
               dropdown.style.display = 'none';
 
               // Additional form field population based on the selected option

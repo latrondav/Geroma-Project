@@ -83,11 +83,10 @@ class TaxCalculation(models.Model):
     exchange_rate = models.DecimalField(max_digits=10, decimal_places=2)  # Adjust digits as needed
     hscode = models.CharField(max_length=10)
     unit_of_measure = models.CharField(max_length=10, blank=True, null=True)
-    measurement = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    measurement = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, default='Kgs')
     vehicle_type = models.CharField(max_length=20, blank=True, null=True)
     year_of_manufacture = models.CharField(max_length=20, blank=True, null=True)
     seating_capacity = models.CharField(max_length=20, blank=True, null=True)
-    gross_weight = models.CharField(max_length=20, blank=True, null=True)
     engine_capacity = models.CharField(max_length=20, blank=True, null=True)
     goods_description = models.TextField()
     country_of_origin= models.CharField(max_length=10, blank=True, null=True)

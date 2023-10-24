@@ -273,34 +273,35 @@ def calculategeneralgoodstaxes(request):
     if request.method == 'POST':
         cif = Decimal(request.POST.get('cifvalue'))
         currency = request.POST.get('currency')
-        exchange_rate = Decimal(request.POST.get('exchangerate'))
         hscode = request.POST.get('hscode')
         unit_of_measure = request.POST.get('unitofmeasure')
-        measurement = Decimal(request.POST.get('measurement'))
+        gross_unit = Decimal(request.POST.get('grossunit'))
         goods_description = request.POST.get('goodsdescription')
 
         if currency != 'UGX':
-            converted_cif = cif * exchange_rate
+            exchange_rate = (Decimal(3754.27)).quantize(Decimal('0.00'))
+            converted_cif = (cif * exchange_rate).quantize(Decimal('0.00'))
         else:
-            converted_cif = cif
+            exchange_rate = (Decimal(1)).quantize(Decimal('0.00'))
+            converted_cif = (cif).quantize(Decimal('0.00'))
 
-        import_duty = converted_cif * Decimal('0.25')
-        vat = (converted_cif + import_duty) * Decimal('0.18')
-        withholding_tax = converted_cif * Decimal('0.06')
-        infrastructure_levy = converted_cif * Decimal('0.015')
+        import_duty = (converted_cif * Decimal('0.25')).quantize(Decimal('0.00'))
+        vat = ((converted_cif + import_duty) * Decimal('0.18')).quantize(Decimal('0.00'))
+        withholding_tax = (converted_cif * Decimal('0.06')).quantize(Decimal('0.00'))
+        infrastructure_levy = (converted_cif * Decimal('0.015')).quantize(Decimal('0.00'))
 
-        total_tax = import_duty + vat + withholding_tax + infrastructure_levy
+        total_tax = (import_duty + vat + withholding_tax + infrastructure_levy).quantize(Decimal('0.00'))
 
         Category = 'General Goods'
 
         # Save the tax breakdown to the database
         tax_calculation = TaxCalculation.objects.create(
-            cif=cif,
+            cif=(cif).quantize(Decimal('0.00')),
             currency=currency,
             exchange_rate=exchange_rate,
             hscode=hscode,
             unit_of_measure=unit_of_measure,
-            measurement=measurement,
+            measurement=gross_unit,
             goods_description=goods_description,
             converted_cif=converted_cif,
             import_duty=import_duty,
@@ -329,11 +330,11 @@ def calculatemotorvehicletaxes(request):
         seating_capacity = request.POST.get('seatingcapacity')
         gross_weight = Decimal(request.POST.get('grossweight'))
 
-        exchange_rate = (Decimal(3754.27)).quantize(Decimal('0.00'))
-
         if currency != 'UGX':
+            exchange_rate = (Decimal(3754.27)).quantize(Decimal('0.00'))
             converted_cif = (cif * exchange_rate).quantize(Decimal('0.00'))
         else:
+            exchange_rate = (Decimal(1)).quantize(Decimal('0.00'))
             converted_cif = (cif).quantize(Decimal('0.00'))
 
         import_duty = (converted_cif * Decimal('0.25')).quantize(Decimal('0.00'))
@@ -353,6 +354,7 @@ def calculatemotorvehicletaxes(request):
         total_tax = (import_duty + vat + withholding_tax + environmental_levy + registration_fees + stamp_duty + form_fees).quantize(Decimal('0.00'))
 
         Category = 'Motor Vehicle'
+        unitofmeasure = 'Kgs'
 
         # Save the tax breakdown to the database
         tax_calculation = TaxCalculation.objects.create(
@@ -364,7 +366,8 @@ def calculatemotorvehicletaxes(request):
             vehicle_type=vehicle_type,
             year_of_manufacture=year_of_manufacture,
             seating_capacity=seating_capacity,
-            gross_weight=gross_weight,
+            unit_of_measure=unitofmeasure,
+            measurement=gross_weight,
             engine_capacity=engine_capacity,
             goods_description=mv_description,
             country_of_origin=country_of_origin,
@@ -386,12 +389,12 @@ def calculatemotorvehicletaxes(request):
 
   # Add this decorator for CSRF protection
 
-def get_selected_vehicle_details(request, selecteddescription):
+def get_selected_vehicle_details(request, mvvgid):
     if request.method == 'GET':
-        if selecteddescription:
+        if mvvgid:
             try:
                 # Retrieve the vehicle details based on the selected description
-                vehicle = MotorVehicleValueGuide.objects.get(Description=selecteddescription)
+                vehicle = MotorVehicleValueGuide.objects.get(id=mvvgid)
                 vehicle_details = {
                     'hscode': vehicle.HSCode,
                     'CountryOfOrigin': vehicle.CountryOfOrigin,

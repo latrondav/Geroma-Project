@@ -26,7 +26,7 @@ urlpatterns = [
     path('requesttaxrate/', views.requesttaxrate),
     path('calcggt/', views.calculategeneralgoodstaxes),
     path('calcmvt/', views.calculatemotorvehicletaxes),
-    path('getselectedvehicledetails/<selecteddescription>/', views.get_selected_vehicle_details),
+    path('getselectedvehicledetails/<mvvgid>/', views.get_selected_vehicle_details),
 
     #reset password path
     path('resetpasswordform/', auth_views.PasswordResetView.as_view(template_name="passwordmgt/pw_reset_form.html"), name= "password_reset_form"),
