@@ -142,7 +142,8 @@
                         <h4>Tax Calculation Requirements Submitted</h4>
                         <p> <strong>Goods Description:</strong> {{ tax_calculation.goods_description }}</p>
                         <p> <strong>HSCode:</strong> {{ tax_calculation.hscode }}</p>
-                        <p> <strong>CIF Value:</strong> {% if tax_calculation.currency == 'USD' %} USD {{ tax_calculation.cif }} {% else %} UGX {{ tax_calculation.cif }} {% endif %}</p>
+                        <p> <strong>HSCode Description:</strong> {{ tax_calculation.hscode_description }}</p>
+                        <p> <strong>CIF Value:</strong> {{ tax_calculation.currency }} {{ tax_calculation.cif }}</p>
                         <p> <strong>Exchange Rate:</strong> UGX {{ tax_calculation.exchange_rate }}</p>
                         <p> <strong>Converted CIF Value:</strong> UGX {{ tax_calculation.converted_cif }}</p>
                         <p> <strong>Gross Unit:</strong> {{ tax_calculation.measurement }} {{ tax_calculation.unit_of_measure }}</p>
@@ -169,7 +170,8 @@
                           <h4>Tax Calculation Requirements Submitted</h4>
                           <p> <strong>Motor Vehicle Description:</strong> {{ tax_calculation.goods_description }}</p>
                           <p> <strong>HSCode:</strong> {{ tax_calculation.hscode }}</p>
-                          <p> <strong>CIF Value:</strong> {% if tax_calculation.currency == 'USD' %} {{ tax_calculation.currency }} {{ tax_calculation.cif }} {% else %} {{ tax_calculation.currency }} {{ tax_calculation.cif }} {% endif %}</p>
+                          <p> <strong>HSCode Description:</strong> {{ tax_calculation.hscode_description }}</p>
+                          <p> <strong>CIF Value:</strong> {{ tax_calculation.currency }} {{ tax_calculation.cif }}</p>
                           <p> <strong>Exchange Rate:</strong> UGX {{ tax_calculation.exchange_rate }}</p>
                           <p> <strong>Converted CIF Value:</strong> UGX {{ tax_calculation.converted_cif }}</p>
                           <p> <strong>Engine Capacity:</strong> {{ tax_calculation.engine_capacity }}</p>
@@ -416,6 +418,26 @@
 
           </div>
         </section>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const hscodeInput = document.getElementById("hscode");
+
+            hscodeInput.addEventListener("blur", function () {
+              const hscodeValue = hscodeInput.value;
+
+              // Check if the entered value does not match the desired format (8120.12.20)
+              if (!/^\d{4}\.\d{2}\.\d{2}$/.test(hscodeValue)) {
+                // Attempt to format the value
+                const formattedHscode = hscodeValue.replace(/(\d{4})(\d{2})(\d{2})/, "$1.$2.$3");
+
+                // Update the input field with the formatted value
+                hscodeInput.value = formattedHscode;
+              }
+            });
+          });
+        </script>
+
       
         <script>
           // Section 1: Variable Declarations

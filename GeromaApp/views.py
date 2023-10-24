@@ -284,8 +284,15 @@ def calculategeneralgoodstaxes(request):
         else:
             exchange_rate = (Decimal(1)).quantize(Decimal('0.00'))
             converted_cif = (cif).quantize(Decimal('0.00'))
-
-        import_duty = (converted_cif * Decimal('0.25')).quantize(Decimal('0.00'))
+        
+        hscodedetails = HSCodes.objects.get(hs_code=hscode)
+        if hscodedetails:
+            import_duty = (converted_cif * Decimal(hscodedetails.rate)).quantize(Decimal('0.00'))
+            HSCodeDescription = hscodedetails.description
+        else:
+            messages.error(request, "Invalid Or Wrong HSCode Submitted")
+            return render(request, 'requesttaxrate.html')
+        
         vat = ((converted_cif + import_duty) * Decimal('0.18')).quantize(Decimal('0.00'))
         withholding_tax = (converted_cif * Decimal('0.06')).quantize(Decimal('0.00'))
         infrastructure_levy = (converted_cif * Decimal('0.015')).quantize(Decimal('0.00'))
@@ -300,6 +307,7 @@ def calculategeneralgoodstaxes(request):
             currency=currency,
             exchange_rate=exchange_rate,
             hscode=hscode,
+            hscode_description=HSCodeDescription,
             unit_of_measure=unit_of_measure,
             measurement=gross_unit,
             goods_description=goods_description,
@@ -337,7 +345,14 @@ def calculatemotorvehicletaxes(request):
             exchange_rate = (Decimal(1)).quantize(Decimal('0.00'))
             converted_cif = (cif).quantize(Decimal('0.00'))
 
-        import_duty = (converted_cif * Decimal('0.25')).quantize(Decimal('0.00'))
+        hscodedetails = HSCodes.objects.get(hs_code=hscode)
+        if hscodedetails:
+            import_duty = (converted_cif * Decimal(hscodedetails.rate)).quantize(Decimal('0.00'))
+            HSCodeDescription = hscodedetails.description
+        else:
+            messages.error(request, "Invalid Or Wrong HSCode Submitted")
+            return render(request, 'requesttaxrate.html')
+
         vat = ((converted_cif + import_duty) * Decimal('0.18')).quantize(Decimal('0.00'))
         withholding_tax = (converted_cif * Decimal('0.06')).quantize(Decimal('0.00'))
 
@@ -363,6 +378,7 @@ def calculatemotorvehicletaxes(request):
             exchange_rate=exchange_rate,
             converted_cif=converted_cif,
             hscode=hscode,
+            hscode_description=HSCodeDescription,
             vehicle_type=vehicle_type,
             year_of_manufacture=year_of_manufacture,
             seating_capacity=seating_capacity,
