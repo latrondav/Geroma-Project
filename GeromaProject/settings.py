@@ -19,12 +19,12 @@ from django.core.management.utils import get_random_secret_key
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # MY EMAIL SETTING
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_USE_TLS = config('EMAIL_USE_TLS')
-EMAIL_PORT = config('EMAIL_PORT', cast=int)
-EMAIL_USER = config('EMAIL_USER')
-EMAIL_PASSWORD = config('EMAIL_PASSWORD')
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = config('EMAIL_HOST')
+# EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+# EMAIL_PORT = config('EMAIL_PORT', cast=int)
+# EMAIL_USER = config('EMAIL_USER')
+# EMAIL_PASSWORD = config('EMAIL_PASSWORD')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/

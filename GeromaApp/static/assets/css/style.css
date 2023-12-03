@@ -624,7 +624,6 @@ h6 {
   background: url("../img/hero-bg.png") top center;
   background-size: cover;
   position: relative;
-  margin-bottom: -90px;
   z-index: 99;
   transition: 0.3s;
 }
@@ -734,10 +733,10 @@ h6 {
 
 @media (max-width: 768px),
 (max-height: 700px) {
-  #hero {
+  /* #hero {
     height: 120vh;
     padding: 100px 0;
-  }
+  } */
 
   #hero h2 {
     font-size: 28px;
@@ -1411,8 +1410,8 @@ section {
 
 .team .member .pic {
   overflow: hidden;
-  width: 180px;
-  border-radius: 50%;
+  width: 600px;
+  border-radius: 2rem;
 }
 
 .team .member .pic img {

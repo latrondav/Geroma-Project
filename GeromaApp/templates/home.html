@@ -11,102 +11,6 @@
   
     {% include 'includes/header.html' %}
 
-    {% if user.is_authenticated %}
-    <!-- === After Login View === -->
-
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex justify-cntent-center align-items-center">
-
-      <div class="wave">
-
-        <svg width="100%" height="155px" viewBox="0 0 1920 155" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
-              <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,757 L1017.15166,757 L0,757 L0,439.134243 Z" id="Path"></path>
-            </g>
-          </g>
-        </svg>
-
-      </div>
-
-      <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade mt-5" data-bs-ride="carousel">
-
-        <!-- Slide 1 -->
-        <div class="carousel-item active">
-          <div class="carousel-container">
-            <img class="animate__animated animate__fadeInUp" src="{% static 'assets/img/NewSica.jpg' %}" style="width: 150px; height: 100px; border-radius: 2rem;" alt="">
-            <h2 class="animate__animated animate__fadeInDown"><strong>GEROMA LOGISTICS LIMITED</strong></span></h2>
-            <p class="animate__animated animate__fadeInUp"><strong>Empowering Trade, Innovating Solutions, and Motivating Success.</strong></p>
-            <a class="btn-get-started animate__animated animate__fadeInUp scrollto"  data-toggle="modal" data-target="#YourAccountModal"><strong>YOUR ARE WELCOME {{ user.first_name }}</strong></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section><!-- End Hero -->
-
-
-    <!--================ Model Area =================-->
-    {% include 'includes/profilemodal.html' %}
-
-    {% include 'includes/updateaccountprofilemodal.html' %}
-
-    {% include 'passwordmgt/pw_change_form.html' %}
-    <!--================ End Modal Area =================--> 
-
-    <!-- Main Section -->
-    <main id="main">
-
-      <!-- ======= Icon Boxes Section ======= -->
-      <section id="icon-boxes" class="icon-boxes">
-        <div class="container">
-
-          <div class="row">
-            <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up">
-              <div class="icon-box">
-                <h4 class="title text-center"><a href="">MISSION</a></h4>
-                <p class="description">To provide seamless and efficient customs clearance services, exceptional freight
-                  forwarding solutions, and expert tax consultation to our valued clients. We aim to foster strong partnerships
-                  and add value to their businesses by optimizing supply chain processes and ensuring compliance with customs and
-                  tax regulations.</p>
-              </div>
-            </div>
-          
-            <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon-box">
-                <h4 class="title text-center"><a href="">VISION</a></h4>
-                <p class="description">To be the leading and most trusted logistics partner in the industry, setting the
-                  benchmark for excellence in customs clearance, forwarding, and tax consultation services. We envision a future
-                  where our clients experience hassle-free international trade and business operations, facilitated by our
-                  innovative solutions and expertise.</p>
-              </div>
-            </div>
-          
-            <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
-              <div class="icon-box">
-                <h4 class="title text-center"><a href="">MOTTO</a></h4>
-                <p class="description">Empowering Trade, Innovating Solutions, and Motivating Success.</p>
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-      </section><!-- End Icon Boxes Section -->
-
-      
-
-      <!-- ======= Clients Section ======= -->
-      {% include 'includes/clients.html' %}
-      <!-- End Clients Section -->
-
-    </main>
-    <!-- End #main -->
-    <!-- === After Login View === -->
-
-    {% else %}
-
-    <!-- === Before Login View === -->
-
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex justify-content-center align-items-center">
 
@@ -129,12 +33,12 @@
               style="border-radius: 10rem;" alt="">
             <h2 class="animate__animated animate__fadeInDown"><strong>GEROMA LOGISTICS LIMITED</strong></h2>
             <p class="animate__animated animate__fadeInUp"><strong>Empowering Trade, Innovating Solutions, and Motivating Success.</strong></p>
-            <div style="display: flex; gap: 10px;">
+            <!-- <div style="display: flex; gap: 10px;">
               <a class="btn-get-started animate__animated animate__fadeInUp scrollto" data-toggle="modal"
                 data-target="#RegisterModal"><strong>REGISTER</strong></a>
               <a class="btn-get-started animate__animated animate__fadeInUp scrollto" data-toggle="modal"
                 data-target="#LoginModal"><strong>LOGIN</strong></a>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -304,13 +208,8 @@
 
     </main>
     <!-- End #main -->
-    <!-- === End Before Login View === -->
-
-    {% endif %}
 
    {% include 'includes/footer.html' %}
-
-    
 
   </body>
 </html>

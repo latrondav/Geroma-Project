@@ -48,17 +48,6 @@
       <!-- ======= Hero Section ======= -->
       <section id="hero" class="d-flex justify-cntent-center align-items-center">
 
-        <div class="wave">
-
-            <svg width="1920px" height="215px" viewBox="0 0 1920 215" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
-                  <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,667 L1017.15166,667 L0,667 L0,439.134243 Z" id="Path"></path>
-                </g>
-              </g>
-            </svg>
-
-        </div>
 
         <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
           <div class="carousel-item active">
@@ -86,11 +75,11 @@
               <div class="col-lg-3"></div>
               <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="member d-flex align-items-start">
-                  <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+                  <div class="pic"><img src="{% static 'assets/img/team/team-1.jpg' %}" class="img-fluid" alt=""></div>
                   <div class="member-info">
                     <h4>Mr. Otyama Francis</h4>
                     <span>Executive Director</span>
-                    <p>
+                    <p align="justify">
                       Francis joined Geroma Ltd in 2012. Prior to this, he enjoyed a successful and varied one decade with Uganda Revenue
                       Authority (URA), including the implementation of One Border Stop Point (OSBP) and 24 Hour operation at Malaba Border to
                       facilitate faster clearance of cargo, as Acting Supervisor from June 2009 to November 2011, he established the station’s
@@ -116,9 +105,11 @@
                 <div class="member d-flex align-items-start">
                   <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
                   <div class="member-info">
-                    <h4>Sarah Jhonson</h4>
-                    <span>Product Manager</span>
-                    <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
+                    <h4>Mrs. Otyama Rachel</h4>
+                    <span>Director</span>
+                    <p align="justify">As the Director, Mrs. Otyama Rachel oversees and guides the pursuit of greater achievements while embracing the
+                      pleasures of the journey. Her focus lies in understanding and presenting opportunities that empower and uplift those
+                      involved.</p>
                     <div class="social">
                       <a href=""><i class="ri-twitter-fill"></i></a>
                       <a href=""><i class="ri-facebook-fill"></i></a>
@@ -131,11 +122,14 @@
         
               <div class="col-lg-6 mt-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="member d-flex align-items-start">
-                  <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
+                  <div class="pic"><img src="{% static 'assets/img/team/Elijah1.jpg' %}" class="img-fluid" alt=""></div>
                   <div class="member-info">
-                    <h4>William Anderson</h4>
-                    <span>CTO</span>
-                    <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
+                    <h4>Mr. Kadama Elijah Andrew</h4>
+                    <span>Manager</span>
+                    <p align="justify">Mr. Kadama Elijah Andrew is a dedicated Manager known for his exceptional leadership skills and commitment to
+                      achieving organizational goals. He excels in navigating complex challenges, fostering teamwork, and delivering
+                      high-quality results. His approachable nature and expertise make him adept at facilitating seamless operations within
+                      the workplace.</p>
                     <div class="social">
                       <a href=""><i class="ri-twitter-fill"></i></a>
                       <a href=""><i class="ri-facebook-fill"></i></a>
@@ -148,11 +142,28 @@
         
               <div class="col-lg-6 mt-4" data-aos="fade-up" data-aos-delay="400">
                 <div class="member d-flex align-items-start">
-                  <div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
+                  <div class="pic"><img src="{% static 'assets/img/team/Alele1.jpg' %}" class="img-fluid" alt=""></div>
                   <div class="member-info">
-                    <h4>Amanda Jepson</h4>
-                    <span>Accountant</span>
-                    <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
+                    <h4>Mr. Alele Ronald</h4>
+                    <span>Customs Declarant</span>
+                    <p>As a Customs Declarant, I specialize in managing and overseeing the declaration process for goods, ensuring compliance with customs regulations and facilitating smooth import and export procedures. My role involves meticulously handling and documenting the necessary paperwork, ensuring accuracy, and adhering to legal requirements, ultimately contributing to efficient international trade.</p>
+                    <div class="social">
+                      <a href=""><i class="ri-twitter-fill"></i></a>
+                      <a href=""><i class="ri-facebook-fill"></i></a>
+                      <a href=""><i class="ri-instagram-fill"></i></a>
+                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6 mt-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="member d-flex align-items-start">
+                  <div class="pic"><img src="{% static 'assets/img/team/Sonia2.jpg' %}" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>Mrs. Anena Sonia</h4>
+                    <span>Customs Declarant</span>
+                    <p>As a Customs Declarant, I specialize in managing and overseeing the declaration process for goods, ensuring compliance with customs regulations and facilitating smooth import and export procedures. My role involves meticulously handling and documenting the necessary paperwork, ensuring accuracy, and adhering to legal requirements, ultimately contributing to efficient international trade.</p>
                     <div class="social">
                       <a href=""><i class="ri-twitter-fill"></i></a>
                       <a href=""><i class="ri-facebook-fill"></i></a>
@@ -167,9 +178,47 @@
                 <div class="member d-flex align-items-start">
                   <div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
                   <div class="member-info">
-                    <h4>Amanda Jepson</h4>
-                    <span>Accountant</span>
-                    <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
+                    <h4>Mrs. Owachgiu Osbert</h4>
+                    <span>Customs Declarant</span>
+                    <p>As a Customs Declarant, I specialize in managing and overseeing the declaration process for goods, ensuring compliance with customs regulations and facilitating smooth import and export procedures. My role involves meticulously handling and documenting the necessary paperwork, ensuring accuracy, and adhering to legal requirements, ultimately contributing to efficient international trade.</p>
+                    <div class="social">
+                      <a href=""><i class="ri-twitter-fill"></i></a>
+                      <a href=""><i class="ri-facebook-fill"></i></a>
+                      <a href=""><i class="ri-instagram-fill"></i></a>
+                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6 mt-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="member d-flex align-items-start">
+                  <div class="pic"><img src="{% static 'assets/img/team/Emma1.jpg' %}" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>Mrs. Wambuka Emmanuel</h4>
+                    <span>Customs Declarant</span>
+                    <p>As a Customs Declarant, I specialize in managing and overseeing the declaration process for goods, ensuring compliance with customs regulations and facilitating smooth import and export procedures. My role involves meticulously handling and documenting the necessary paperwork, ensuring accuracy, and adhering to legal requirements, ultimately contributing to efficient international trade.</p>
+                    <div class="social">
+                      <a href=""><i class="ri-twitter-fill"></i></a>
+                      <a href=""><i class="ri-facebook-fill"></i></a>
+                      <a href=""><i class="ri-instagram-fill"></i></a>
+                      <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6 mt-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="member d-flex align-items-start">
+                  <div class="pic"><img src="{% static 'assets/img/team/Ronnie1.jpg' %}" class="img-fluid" alt=""></div>
+                  <div class="member-info">
+                    <h4>Mrs. Latim Ronnie David</h4>
+                    <span>IT Support And Consultant</span>
+                    <p align="justify">As an experienced IT Support and Consultant, I specialize in providing comprehensive technical assistance, resolving
+                      complex issues, and offering strategic guidance to optimize IT infrastructures. My expertise spans across
+                      troubleshooting, system analysis, and implementing innovative solutions to streamline operations and enhance overall
+                      efficiency. I am committed to delivering top-notch support and consultancy services, ensuring seamless functionality
+                      and technological advancements for my clients.</p>
                     <div class="social">
                       <a href=""><i class="ri-twitter-fill"></i></a>
                       <a href=""><i class="ri-facebook-fill"></i></a>
