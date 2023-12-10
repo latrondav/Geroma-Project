@@ -1,7 +1,7 @@
 from distutils.command.upload import upload
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.core.validators import EmailValidator
 
 # Create your models here.
 class Contacts(models.Model):
@@ -135,3 +135,55 @@ class MotorVehicleValueGuide(models.Model):
     def __str__(self):
         return self.Description
 
+class Blog(models.Model):
+    blog_image = models.ImageField(upload_to="Blog_images", default="Blog_images/blog.jpg")
+    blog_title = models.CharField(max_length=255, verbose_name='Blog Title')
+    blog_author = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name='blogs', db_index=True)
+    blog_category = models.CharField(max_length=255, verbose_name='Blog Category')
+    blog_body_introduction = models.TextField(verbose_name='Introduction')
+    blog_body_main = models.TextField(verbose_name='Main Content')
+    blog_body_conclusion = models.TextField(verbose_name='Conclusion')
+    blog_created_at = models.DateTimeField(auto_now_add=True)
+    blog_updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        # Delete the old image when a new one is uploaded
+        try:
+            this = Blog.objects.get(id=self.id)
+            if this.blog_image != self.blog_image:
+                this.blog_image.delete(save=False)
+        except Blog.DoesNotExist:
+            pass
+        
+        super(Blog, self).save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        # Delete the associated image when a blog is deleted
+        self.blog_image.delete(save=False)
+        super(Blog, self).delete(*args, **kwargs)
+
+    def __str__(self):
+        """String representation of the Blog model."""
+        return self.blog_title
+
+    @property
+    def date(self):
+        """Get the date portion of blog_created_at."""
+        return self.blog_created_at.date()
+
+class BlogComment(models.Model):
+    comment_blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments', db_index=True)
+    comment_author = models.CharField(max_length=255, verbose_name='Author')
+    comment_email = models.EmailField(validators=[EmailValidator()])
+    comment_body = models.TextField(verbose_name='Comment Body')
+    comment_created_at = models.DateTimeField(auto_now_add=True)
+    comment_updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        """String representation of the Comment model."""
+        return self.comment_author
+
+    @property
+    def date(self):
+        """Get the date portion of comment_created_at."""
+        return self.comment_created_at.date()

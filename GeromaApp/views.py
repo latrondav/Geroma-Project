@@ -1,5 +1,5 @@
 from multiprocessing import context
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -14,9 +14,10 @@ from . token import generate_token
 from django.core.mail import EmailMessage, send_mail
 from decimal import Decimal
 from datetime import datetime
-from django.core.paginator import Paginator
-from django.http import JsonResponse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.db.models import Q, F, Count
 
 # Create your views here.
 
@@ -158,10 +159,136 @@ def alumnicarbinet(request):
     return render(request, 'alumnicarbinet.html', context)
 
 def blog(request):
-    return render(request, 'blog.html')
+    # Query to retrieve a list of blogs with the number of comments annotated
+    blog_list = Blog.objects.annotate(num_comments=Count('comments'))
 
-def blogdetail(request):
-    return render(request, 'blogdetail.html')
+    # Pagination
+    paginator = Paginator(blog_list, 5)  # Show 5 blogs per page
+    page = request.GET.get('page')
+    
+    try:
+        blogs = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        blogs = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g., 9999), deliver the last page of results.
+        blogs = paginator.page(paginator.num_pages)
+
+    # Query to retrieve categories with the number of blogs per category
+    categories = Blog.objects.values('blog_category').annotate(count=Count('blog_category'))
+
+    context = {
+        'Blogs': blogs,  # Change this variable name to 'blogs'
+        'Categories': categories
+    }
+    return render(request, 'blog.html', context)
+
+def blogdetail(request, bid):
+    blogdetails = get_object_or_404(Blog, id=bid)
+    blog_comments = BlogComment.objects.filter(comment_blog=blogdetails)
+    comment_count = blog_comments.count()
+
+    # Query to retrieve categories with the number of blogs per category
+    categories = Blog.objects.values('blog_category').annotate(count=Count('blog_category'))
+
+    context = {
+        'BlogDetails': blogdetails,
+        'blog_comments': blog_comments,
+        'comment_count': comment_count,
+        'Categories': categories
+    }
+    return render(request, 'blogdetail.html', context)
+
+def postblog(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            blog_image = request.FILES.get('blog_image')
+            blog_title = request.POST.get('blog_title')
+            blog_category = request.POST.get('blog_category')
+            blog_body_introduction = request.POST.get('blog_body_introduction')
+            blog_body_main = request.POST.get('blog_body_main')
+            blog_body_conclusion = request.POST.get('blog_body_conclusion')
+
+            if all([blog_image, blog_title, blog_category, blog_body_introduction, blog_body_main, blog_body_conclusion]):
+                PB = Blog(
+                    blog_image=blog_image,
+                    blog_title=blog_title,
+                    blog_author=request.user,
+                    blog_category=blog_category,
+                    blog_body_introduction=blog_body_introduction,
+                    blog_body_main=blog_body_main,
+                    blog_body_conclusion=blog_body_conclusion
+                )
+                PB.save()
+                messages.success(request, "Blog Posted Successfully")
+                return redirect('/blog/')
+            else:
+                messages.error(request, 'Failed To Post Blog, Please Fill in All Required Fields.')
+                return redirect('/blog/')
+        else:
+            messages.error(request, 'Failed To Post Blog, Please Try Again Later.')
+            return redirect('/blog/')
+    else:
+        return redirect('/')
+
+def submitblogcomment(request, bid):
+    if request.method == 'POST':
+        comment_author = request.POST.get('comment_author')
+        comment_email = request.POST.get('comment_email')
+        comment_body = request.POST.get('comment_body')
+        
+        # Retrieve the blog from the database or return 404 if it doesn't exist
+        blog = get_object_or_404(Blog, id=bid)
+
+        if all([comment_author, comment_email, comment_body]):
+            BC = BlogComment(
+                comment_author=comment_author,
+                comment_email=comment_email,
+                comment_body=comment_body,
+                comment_blog=blog
+            )
+            BC.save()
+            messages.success(request, "Blog Comment Posted Successfully")
+        else:
+            messages.error(request, 'Failed To Post Blog Comment, Please Fill in All Required Fields.')
+    else:
+        messages.error(request, 'Failed To Post Blog Comment, Please Try Again Later.')
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))  # Use the named URL pattern for blog list
+
+def blogsearch(request):
+    query = request.POST.get('blogsearch') if request.method == 'POST' else None
+
+    if query:
+        # Search and filter the blogs
+        Blogs = Blog.objects.filter(
+            Q(blog_title__icontains=query) |
+            Q(blog_category__icontains=query) |
+            Q(blog_author__first_name__icontains=query) |
+            Q(blog_author__last_name__icontains=query)
+        )
+    else:
+        # If no query, retrieve all blogs
+        Blogs = Blog.objects.all()
+
+    # Adding the count of comments for each blog
+    for blog in Blogs:
+        blog.num_comments = BlogComment.objects.filter(comment_blog=blog).count()
+
+    paginator = Paginator(Blogs, 5)
+    page = request.GET.get('page')
+    Blogs = paginator.get_page(page)
+    
+    categories = Blog.objects.values('blog_category').annotate(count=Count('blog_category'))
+
+    context = {
+        'Blogs': Blogs,
+        'Query': query,
+        'Categories': categories
+    }
+
+    return render(request, 'blog.html', context)
 
 def contact(request):
     if request.method == 'POST':

@@ -5,7 +5,8 @@ from GeromaApp.models import *
 #admin.site.register(Contacts)
 admin.site.register(Profile)
 admin.site.register(Events)
-#admin.site.register(Orders)
+admin.site.register(Blog)
+admin.site.register(BlogComment)
 admin.site.register(Alumni_Carbinets)
 admin.site.register(TaxCalculation)
 
